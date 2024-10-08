@@ -45,9 +45,4 @@ class Usuario extends Authenticatable
     {
         return $this->belongsToMany(Contagem::class);
     }
-
-    public function patrimonios(): BelongsToMany
-    {
-        return $this->belongsToMany(Patrimonio::class)->using(ContagemPatrimonio::class);
-    }
 }

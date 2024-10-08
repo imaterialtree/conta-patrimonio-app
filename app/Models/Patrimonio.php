@@ -31,9 +31,4 @@ class Patrimonio extends Model
     {
         return $this->hasOne(Departamento::class);
     }
-    
-    public function contagem(): BelongsToMany
-    {
-        return $this->belongsToMany(Contagem::class)->using(ContagemPatrimonio::class);
-    }
 }
