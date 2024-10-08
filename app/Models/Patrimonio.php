@@ -17,7 +17,6 @@ class Patrimonio extends Model
     const DELETED_AT = 'excluido_em';
 
     protected $fillable = [
-        'titulo',
         'descricao',
     ];
 
