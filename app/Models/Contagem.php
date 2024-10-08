@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Contagem extends Model
 {
@@ -20,4 +22,24 @@ class Contagem extends Model
         'status',
         'finalizado_em'
     ];
+
+    protected $casts = [
+        'finalizado_em' => 'datetime',
+    ];
+
+    // Relacionamentos
+    public function usuarioCriador(): HasOne
+    {
+        return $this->hasOne(Usuario::class);
+    }
+
+    public function usuariosComissao(): BelongsToMany
+    {
+        return $this->belongsToMany(Usuario::class);
+    }
+
+    public function patrimonios(): BelongsToMany
+    {
+        return $this->belongsToMany(Patrimonio::class)->using(ContagemPatrimonio::class);
+    }
 }

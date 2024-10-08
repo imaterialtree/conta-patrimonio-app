@@ -13,8 +13,12 @@ class ContagemPatrimonio extends Pivot
         'patrimonio_id',
         'usuario_id',
         'nova_classificacao_id',
-        'foto_url',
+        'foto',
         'nao_encontrado',
         'justificativa',
+    ];
+
+    protected $casts = [
+        'nao_encontrado' => 'boolean',
     ];
 }

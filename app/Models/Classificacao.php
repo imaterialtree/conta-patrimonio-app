@@ -16,4 +16,10 @@ class Classificacao extends Model
     protected $fillable = [
         'titulo',
     ];
+
+    // Relacionamentos
+    public function patrimonios()
+    {
+        return $this->hasMany(Patrimonio::class);
+    }
 }
