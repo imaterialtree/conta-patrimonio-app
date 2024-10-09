@@ -13,6 +13,19 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('classificacoes', function (Blueprint $table) {
+            $table->id();
+            $table->string('titulo');
+        });
+        
+        Schema::create('departamentos', function (Blueprint $table) {
+            $table->id();
+            $table->string('titulo');
+            $table->timestamp('criado_em');
+            $table->timestamp('atualizado_em')->nullable();
+            $table->timestamp('excluido_em')->nullable();
+        });
+        
         Schema::create('patrimonios', function (Blueprint $table) {
             $table->id();
             $table->string('descricao');
@@ -23,21 +36,8 @@ return new class extends Migration
             $table->foreignId('classificacao_id')->constrained('classificacoes');
         });
 
-        Schema::create('classificacoes', function (Blueprint $table) {
-            $table->id();
-            $table->titulo();
-        });
-
-        Schema::create('departamentos', function (Blueprint $table) {
-            $table->id();
-            $table->string('titulo');
-            $table->timestamp('criado_em');
-            $table->timestamp('atualizado_em')->nullable();
-            $table->timestamp('excluido_em')->nullable();
-        });
-
         // Preencher banco
-        DB::insert(Classificacao::class, [
+        DB::table('classificacoes')->insert([
             ['titulo' => 'Novo'],
             ['titulo' => 'Em Uso'],
             ['titulo' => 'Ocioso'],
@@ -54,8 +54,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('patrimonios');
         Schema::dropIfExists('classificacoes');
         Schema::dropIfExists('departamentos');
+        Schema::dropIfExists('patrimonios');
     }
 };
