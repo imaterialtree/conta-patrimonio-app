@@ -15,7 +15,6 @@ class Contagem extends Model
 
     const CREATED_AT = 'criado_em';
     const UPDATED_AT = 'atualizado_em';
-    // const DELETED_AT = 'finalizado_em';
 
     protected $fillable = [
         'status',

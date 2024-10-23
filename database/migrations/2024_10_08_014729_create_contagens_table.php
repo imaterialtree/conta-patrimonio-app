@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('usuario_criador_id')->constrained('usuarios');
             $table->enum('status', ['Em andamento', 'Finalizado', 'Cancelado']);
+            $table->string('observacao')->nullable();
             $table->timestamp('criado_em');
-            $table->timestamp('atualizado_em');
-            $table->timestamp('finalizado_em');
+            $table->timestamp('atualizado_em')->nullable();
+            $table->timestamp('finalizado_em')->nullable();
         });
 
         Schema::create('contagem_patrimonios', function (Blueprint $table) {
@@ -25,11 +26,10 @@ return new class extends Migration
             $table->foreignId('contagem_id')->constrained('contagens');
             $table->foreignId('patrimonio_id')->constrained('patrimonios');
             $table->foreignId('usuario_id')->constrained('usuarios');
-            $table->foreignId('nova_classificacao_id')->constrained('classificacoes');
-            $table->foreignId('antiga_classificacao_id')->constrained('classificacoes');
-            $table->string('foto');
+            $table->foreignId('classificacao_proposta_id')->constrained('classificacoes');
+            $table->string('foto')->nullable();
             $table->boolean('nao_encontrado');
-            $table->text('justificativa');
+            $table->text('justificativa')->nullable();
         });
 
         Schema::create('contagem_usuario', function (Blueprint $table) {
