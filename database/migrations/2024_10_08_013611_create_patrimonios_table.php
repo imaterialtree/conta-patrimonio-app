@@ -28,6 +28,7 @@ return new class extends Migration
         
         Schema::create('patrimonios', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo');
             $table->string('descricao');
             $table->timestamp('criado_em');
             $table->timestamp('atualizado_em')->nullable();
