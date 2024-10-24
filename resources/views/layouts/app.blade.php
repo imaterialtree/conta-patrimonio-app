@@ -1,14 +1,17 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
+
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('titulo')</title>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -16,15 +19,15 @@
     @stack('styles')
 </head>
 
-<body>
-    <div id="app">
-        @include('layouts.navigation')
-
-        <main class="py-4">
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            @include('partials.side-nav')
+            @include('partials.top-nav')
             @yield('content')
-        </main>
+            @include('partials.footer')
+        </div>
     </div>
-
     @stack('scripts')
 </body>
 
