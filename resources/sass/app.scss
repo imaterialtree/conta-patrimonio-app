@@ -4,8 +4,9 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 // Font Awesome
-@import "~font-awesome/scss/font-awesome";
+@import './fontawesome/scss/fontawesome.scss';
 // Animate.css
-@import "~animate.css/animate.min.css";
+@import "animate.css/animate.min.css";
 // NProgress
-@import "~nprogress/nprogress.css";
+@import "nprogress/nprogress.css";
+
