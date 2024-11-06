@@ -53,17 +53,13 @@
                             <input type="password" class="form-control" placeholder="Senha" name="senha" required />
                         </div>
                         <div>
-                            <button class="btn btn-link submit" type="submit">Log in</button>
-                                <a class="reset_pass" href="#">Lost your password?</a>
+                            <button class="btn btn-default submit" type="submit">Log in</button>
+                            <a class="reset_pass" href="#">Esqueceu a senha?</a>
                         </div>
 
                         <div class="clearfix"></div>
 
                         <div class="separator">
-                            <p class="change_link">New to site?
-                                <a href="#signup" class="to_register"> Create Account </a>
-                            </p>
-
                             <div class="clearfix"></div>
                             <br />
 
@@ -76,7 +72,7 @@
                 </section>
             </div>
 
-            <div id="register" class="animate form registration_form">
+            {{-- <div id="register" class="animate form registration_form">
                 <section class="login_content">
                     <form>
                         @csrf
@@ -106,12 +102,12 @@
 
                             <div>
                                 <h1><i class="fa-solid fa-boxes-stacked"></i> Conta Patrimônio</h1>
-                                <p>©2024 All Rights Reserved. Conta Patrimônio Privacy and Terms</p>
+                                <p>©2024 Todos os direitos reservados. Conta Patrimônio</p>
                             </div>
                         </div>
                     </form>
                 </section>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
