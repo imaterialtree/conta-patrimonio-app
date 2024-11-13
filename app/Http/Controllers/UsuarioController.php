@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UsuarioRequest;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 
@@ -30,18 +32,13 @@ class UsuarioController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UsuarioRequest $request)
     {
-        $validated = $request->validate([
-            'nome' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Usuario::class],
-            'senha' => ['required', 'confirmed', Rules\Password::defaults()],
-            'siape' => ['required', 'numeric', 'unique:'.Usuario::class],
-            'tipo' => ['required',Rule::in(['admin','comissao'])],
-        ]);
-
-        Usuario::create($validated);
-
+        $user = Usuario::make($request->validated());
+        $user->senha = Hash::make('senha123');
+        $user->save();
+        
+        return to_route('usuarios.index')->with('success', 'Usuário criado com sucesso');
     }
 
     /**
@@ -65,15 +62,7 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        $validated = $request->validate([
-            'nome' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Usuario::class],
-            'senha' => ['required', 'confirmed', Rules\Password::defaults()],
-            'siape' => ['required', 'numeric', 'unique:'.Usuario::class],
-            'tipo' => ['required',Rule::in(['admin','comissao'])],
-        ]);
-
-        $usuario->update($validated);
+        $usuario->update($request->validated());
     }
 
     /**

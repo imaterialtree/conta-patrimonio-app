@@ -31,7 +31,7 @@ class AuthController extends Controller
 
         if ($usuario  && Hash::check($senha, $usuario?->senha)) {
             Auth::login($usuario);
-            return redirect()->intended('dashboard');
+            return redirect()->intended('home');
         }
 
         return back()->withErrors([
