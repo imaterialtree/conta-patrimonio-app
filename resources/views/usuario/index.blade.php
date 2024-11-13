@@ -1,5 +1,4 @@
-<!-- resources/views/usuarios/index.blade.php -->
-@extends('layouts.app')
+@extends('layouts.app-alt')
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -25,13 +24,19 @@
         <h5 class="card-title">Usuário</h5>
         <ul class="list-group list-group-flush">
             @foreach ($usuarios as $usuario)
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <div>
-                        <strong>{{ $usuario->nome }}</strong><br>
-                        <span class="text-muted">{{ $usuario->email }}</span>
-                    </div>
-                    <span class="badge bg-secondary">{{ $usuario->tipo }}</span>
-                </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{{ $usuario->nome }}</strong><br>
+                    <span class="text-muted">{{ $usuario->email }}</span>
+                </div>
+                <div>
+                <a href="{{ route('usuarios.edit', $usuario)}}" class="btn text-primary" title="Editar usuário">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    @include('usuario.partials.delete-form')
+                    <span class="badge bg-secondary text-white">{{ $usuario->tipo }}</span>
+                </div>
+            </li>
             @endforeach
         </ul>
     </div>
