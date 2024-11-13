@@ -38,4 +38,9 @@ class AuthController extends Controller
             'email' => 'As credenciais não correspondem aos nossos registros.',
         ])->withInput(['email']);
     }
+
+    public function logout()
+    {
+        return route('login');
+    }
 }
