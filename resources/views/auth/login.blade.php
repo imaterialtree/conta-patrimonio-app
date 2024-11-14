@@ -9,11 +9,13 @@
 <body>
     <div class="container vh-100 d-flex justify-content-center align-items-center">
         <div class="col-lg-4 col-10">
+            @include('partials.errors')
             <div class="text-center mb-4">
-                <h3 class="text-muted">Login Form</h3>
+                <h3 class="text-muted">Fazer login</h3>
                 <hr>
             </div>
-            <form>
+            <form action="{{ route('login') }}" method="post">
+                @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
@@ -23,7 +25,7 @@
                     <input type="password" class="form-control" id="password" name="senha" placeholder="Senha" required>
                 </div>
                 <div class="d-flex justify-content-center mb-3">
-                    <a href="#" class="text-decoration-none">Lost your password?</a>
+                    <a href="#" class="text-decoration-none">Esqueceu a senha?</a>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary w-100">Log in</button>
