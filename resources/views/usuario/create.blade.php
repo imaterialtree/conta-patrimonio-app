@@ -1,4 +1,4 @@
-@extends('layouts.app-alt')
+@extends('layouts.app')
 
 @section('content')
     <div class="card mx-auto" style="max-width: 600px;">

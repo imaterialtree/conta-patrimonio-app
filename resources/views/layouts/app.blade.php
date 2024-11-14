@@ -1,31 +1,28 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config('app.name', 'Conta Patrimônio') }}</title>
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-    @stack('styles')
 </head>
+<body class="bg-light">
+    <div class="d-flex">
+        <!-- Barra Lateral -->
+        <x-sidebar />
 
-<body>
-    <div id="app">
-        @include('layouts.navigation')
+        <div class="flex-grow-1">
+            <!-- Topo -->
+            <x-header />
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+            <!-- Conteúdo Principal -->
+            <main class="container my-4">
+                @yield('content')
+            </main>
+        </div>
     </div>
 
-    @stack('scripts')
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
