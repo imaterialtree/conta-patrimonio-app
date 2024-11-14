@@ -5,15 +5,7 @@
         <div class="card-body">
             <h2 class="card-title h4 mb-4">Criar novo usuário</h2>
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            @include('partials.errors')
 
             <form action="{{ route('usuarios.store') }}" method="POST">
                 @csrf
