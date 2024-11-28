@@ -27,7 +27,7 @@
 
                 <div class="mb-3">
                     <label for="siape" class="form-label">SIAPE</label>
-                    <input type="numeric" id="siape" name="siape" class="form-control" placeholder="Número do SIAPE">
+                    <input type="number" id="siape" name="siape" class="form-control @error('siape') is-invalid @enderror" placeholder="Número do SIAPE">
                     @error('siape')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -35,7 +35,7 @@
 
                 <div class="mb-3">
                     <label for="tipo" class="form-label">Tipo</label>
-                    <select id="tipo" name="tipo" class="form-control">
+                    <select id="tipo" name="tipo" class="form-select">
                         <option value="admin">Administrador do sistema</option>
                         <option value="comissao">Membro da Comissão de Contagem</option>
                     </select>

@@ -1,34 +1,39 @@
 @extends('layouts.app')
 
-@section('titulo', 'Home')
-
 @section('content')
-    <div class="right_col" role="main">
-        <div class="">
-            <div class="row">
-                <h1>Tela inicial</h1>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="mb-4">Inventariado</h2>
             </div>
-            <div class="row" style="display: inline-block;">
-                <div class="top_tiles d-flex justify-content-between">
-                    <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 ">
-                        <div class="tile-stats" style="height: 150px">
-                            <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-                            <p>Última contagem há</p>
-                            <div class="count">172 dias</div>
-                        </div>
-                    </div>
-                    <div class="animated flipInY col-lg-4 col-md-4 col-sm-6">
-                        <div class="tile-stats" style="height: 150px">
-                            <div class="icon"><i class="fa fa-comments-o"></i></div>
-                            <div class="count">Nova contagem</div>
-                        </div>
-                    </div>
-                    <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 ">
-                        <div class="tile-stats" style="height: 150px">
-                            <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                            <div class="count">Importar patrimônio</div>
-                        </div>
-                    </div>
+        </div>
+
+        <div class="row">
+            <!-- Cartão de Última Contagem -->
+            <div class="col-md-4 mb-3">
+                <div class="card border-0 shadow-sm bg-light-red text-center p-4 h-100" style="border-radius: 8px;">
+                    <h5 class="card-title text-muted mb-2">Última contagem há</h5>
+                    <h1 class="display-4 text-danger">138 dias</h1>
+                    <p class="text-danger">faltam 42 dias para data limite</p>
+                </div>
+            </div>
+
+            <!-- Cartão de Nova Contagem -->
+            <div class="col-md-4 mb-3">
+                <div class="card border-0 shadow-sm text-center p-4 h-100" style="border-radius: 8px;">
+                    <i class="bi bi-clipboard-check" style="font-size: 2rem;"></i>
+                    <h5 class="card-title mt-2">Nova Contagem</h5>
+                    <a href="{{ route('contagem.index') }}" class="stretched-link"></a>
+                </div>
+            </div>
+
+            <!-- Cartão de Importar Patrimônio -->
+            <div class="col-md-4 mb-3">
+                <div class="card border-0 shadow-sm text-center p-4 h-100" style="border-radius: 8px;">
+                    <i class="bi bi-upload" style="font-size: 2rem;"></i>
+                    <h5 class="card-title mt-2">Importar Patrimônio</h5>
+                    <p class="text-muted">última importação realizada há 155 dias</p>
+                    <a href="{{ route('patrimonio.index') }}" class="stretched-link"></a>
                 </div>
             </div>
         </div>
