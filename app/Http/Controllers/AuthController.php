@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -29,13 +29,24 @@ class AuthController extends Controller
 
         $usuario = Usuario::where('email', $request->email)->first();
 
-        if ($usuario  && Hash::check($senha, $usuario?->senha)) {
+        if ($usuario && Hash::check($senha, $usuario?->senha)) {
             Auth::login($usuario);
-            return redirect()->intended('dashboard');
+
+            return redirect()->intended('home');
         }
 
         return back()->withErrors([
             'email' => 'As credenciais não correspondem aos nossos registros.',
         ])->withInput(['email']);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
