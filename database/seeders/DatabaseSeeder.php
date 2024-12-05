@@ -18,5 +18,9 @@ class DatabaseSeeder extends Seeder
         Usuario::firstOrCreate(
             ['nome' => 'Naoki', 'email' => 'naoki@email.com', 'senha' => Hash::make('senha123'), 'tipo' => 'admin']
         );
+
+        $this->call([
+            PatrimonioSeeder::class,
+        ]);
     }
 }
