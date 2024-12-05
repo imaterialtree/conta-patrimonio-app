@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Usuario;
 use Illuminate\Database\Seeder;
@@ -16,11 +15,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Usuario::firstOrCreate(
+            ['email' => 'naoki@email.com'],
             ['nome' => 'Naoki', 'email' => 'naoki@email.com', 'senha' => Hash::make('senha123'), 'tipo' => 'admin']
         );
 
         $this->call([
             PatrimonioSeeder::class,
+            UsuarioSeeder::class,
         ]);
     }
 }
