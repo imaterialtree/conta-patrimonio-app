@@ -19,12 +19,10 @@ class PatrimonioFactory extends Factory
     public function definition(): array
     {
         return [
-            'codigo' => fake()->randomNumber(10),
+            'codigo' => fake()->regexify('FOR\d{5,10}'),
             'descricao' => fake()->sentence(3),
-            'criado_em' => now(),
-            'atualizado_em' => now(),
             'departamento_id' => Departamento::factory(),
-            'classificacao_id' => Classificacao::factory(),
+            'classificacao_id' => Classificacao::inRandomOrder()->value('id'),
         ];
     }
 }
