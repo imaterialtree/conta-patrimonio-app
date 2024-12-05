@@ -17,7 +17,10 @@ class Patrimonio extends Model
     const DELETED_AT = 'excluido_em';
 
     protected $fillable = [
+        'codigo',
         'descricao',
+        'departamento_id',
+        'classificacao_id',
     ];
 
     // Relacionamento
@@ -25,7 +28,7 @@ class Patrimonio extends Model
     {
         return $this->hasOne(Classificacao::class);
     }
-    
+
     public function departamento(): HasOne
     {
         return $this->hasOne(Departamento::class);
