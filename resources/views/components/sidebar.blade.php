@@ -8,7 +8,7 @@
             </a>
         </li>
         <li class="nav-item mb-2">
-            <a href="{{ route('contagem.index') }}" class="nav-link text-dark">
+            <a href="{{ route('contagens.index') }}" class="nav-link text-dark">
                 <i class="bi bi-list-check me-2"></i> Contagem
             </a>
         </li>

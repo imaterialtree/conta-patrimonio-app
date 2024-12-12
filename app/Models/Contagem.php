@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -18,7 +19,8 @@ class Contagem extends Model
 
     protected $fillable = [
         'status',
-        'finalizado_em'
+        'finalizado_em',
+        'usuario_criador_id',
     ];
 
     protected $casts = [
@@ -26,9 +28,9 @@ class Contagem extends Model
     ];
 
     // Relacionamentos
-    public function usuarioCriador(): HasOne
+    public function usuarioCriador(): BelongsTo
     {
-        return $this->hasOne(Usuario::class);
+        return $this->belongsTo(Usuario::class, 'usuario_criador_id');
     }
 
     public function usuariosComissao(): BelongsToMany

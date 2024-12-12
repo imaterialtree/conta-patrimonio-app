@@ -38,7 +38,7 @@ class Usuario extends Authenticatable
     // Relacionamentos
     public function contagensCriadas(): HasMany
     {
-        return $this->hasMany(Contagem::class);
+        return $this->hasMany(Contagem::class, 'usuario_criador_id');
     }
 
     public function contagensComissao(): BelongsToMany
