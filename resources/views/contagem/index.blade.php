@@ -10,12 +10,20 @@
                 <h1>Contagem</h1>
             </div>
         </div>
+        <!-- Cartão de Nova Contagem -->
+        <div class="col-md-4 mb-3">
+            <div class="card border-0 shadow-sm text-center p-4 h-100" style="border-radius: 8px;">
+                <i class="bi bi-clipboard-check" style="font-size: 2rem;"></i>
+                <h5 class="card-title mt-2">Nova Contagem</h5>
+                <a href="{{ route('contagens.create') }}" class="stretched-link"></a>
+            </div>
+        </div>
 
         <span class="badge badge-primary">Primary</span>
         <div class="col-md-10">
             <div class="card shadow-sm border-0 p-3 h-100">
-                <h5 class="card-title">Servidores disponíveis</h5>
-                <table id="tabela-servidores" class="table table-striped">
+                <h5 class="card-title">Contagens</h5>
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>Data de Início</th>

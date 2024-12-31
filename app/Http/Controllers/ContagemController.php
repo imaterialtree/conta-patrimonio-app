@@ -41,7 +41,7 @@ class ContagemController extends Controller
         ]);
         $contagem->usuariosComissao()->attach($request->membros);
 
-        return to_route('contagens.show');
+        return to_route('contagens.index');
     }
 
     /**
