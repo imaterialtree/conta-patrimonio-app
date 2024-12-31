@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Conta Patrimônio</title>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
+
 <body>
     <div class="container vh-100 d-flex justify-content-center align-items-center">
         <div class="col-lg-4 col-10">
@@ -32,7 +34,6 @@
                 </div>
             </form>
             <div class="text-center mt-5">
-                <h1><i class="fa-solid fa-boxes-stacked"></i></h1>
                 <i class="bi bi-boxes fs-1"></i>
                 <p class="mb-0">Conta Patrimônio</p>
                 <small class="text-muted">&copy;2024 All Rights Reserved. Conta Patrimônio<br>Privacy and Terms</small>
