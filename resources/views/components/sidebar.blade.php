@@ -1,5 +1,5 @@
 <!-- resources/views/components/sidebar.blade.php -->
-<div class="bg-white p-3 vh-100 shadow-sm fixed-top" style="width: 250px;">
+<div class="bg-white p-3 vh-100 shadow-sm sticky-top" style="width: 250px;">
     <h4 class="mb-4">Opções</h4>
     <ul class="nav flex-column">
         <li class="nav-item mb-2">
