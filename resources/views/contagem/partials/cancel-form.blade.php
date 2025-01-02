@@ -15,7 +15,7 @@
                     contagem foi criado por engano. </p>
             </div>
             <div class="modal-footer">
-                <form method="post" action="{{ route('contagens.cancel', $contagem->id) }}" class="p-6">
+                <form method="post" action="" class="p-6">
                     @csrf
                     @method('delete')
 
