@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contagem;
+use App\Models\Departamento;
+use App\Models\Patrimonio;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -41,7 +43,7 @@ class ContagemController extends Controller
         ]);
         $contagem->usuariosComissao()->attach($request->membros);
 
-        return to_route('contagens.index');
+        return to_route('contagens.show', $contagem);
     }
 
     /**
@@ -49,7 +51,11 @@ class ContagemController extends Controller
      */
     public function show(Contagem $contagem)
     {
-        return view('contagem.show', compact('contagem'));
+        $departamentos = Departamento::all();
+        $contagemPatrimonios = $contagem->contagemPatrimonios;
+        $contagem->nadaAver;
+        $patrimonioTotal = Patrimonio::count();
+        return view('contagem.show', compact('contagem', 'departamentos', 'contagemPatrimonios', 'patrimonioTotal'));
     }
 
     /**

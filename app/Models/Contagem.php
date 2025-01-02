@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Contagem extends Model
@@ -36,5 +37,25 @@ class Contagem extends Model
     public function usuariosComissao(): BelongsToMany
     {
         return $this->belongsToMany(Usuario::class);
+    }
+
+    public function patrimoniosContados(): HasMany
+    {
+        return $this->hasMany(ContagemPatrimonio::class);
+    }
+
+    public function progresso(): int
+    {
+        return $this->patrimoniosContados()->count();
+    }
+
+    public function patrimoniosContadosDepartamento(Departamento $departamento)
+    {
+        return $this->patrimoniosContados()->whereRelation('patrimonio', 'departamento_id', $departamento->id);
+    }
+
+    public function progressoDepartamento(Departamento $departamento): int
+    {
+        return $this->patrimoniosContadosDepartamento($departamento)->count();
     }
 }
