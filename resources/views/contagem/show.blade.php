@@ -57,7 +57,7 @@
 
         <div class="row">
             <h1>Progresso da Contagem</h1>
-            <x-progress-bar progress="{{ $contagem->progresso() }}" total="{{ $patrimonioTotal }}" />
+            <x-progress-bar current="{{ $contagem->progresso() }}" total="{{ $patrimonioTotal }}" />
             {{-- TODO validar se pode finalizar contagem --}}
             <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top"
                 title="Ainda faltam patrimônios a serem contabilizados" @disabled(true)>
@@ -66,7 +66,7 @@
             <button class="btn btn-link text-danger" data-bs-toggle="modal" data-bs-target="#cancelarContagem">
                 Cancelar contagem
             </button>
-            @include('contagem.partials.delete-form')
+            @include('contagem.partials.cancel-form')
         </div>
         <div class="row">
             <h2>Progresso por Departamentos</h2>
@@ -86,7 +86,7 @@
                             <tr>
                                 <td>{{ $departamento['titulo'] }}</td>
                                 <td>
-                                    <x-progress-bar progress="{{ $contagem->progressoDepartamento($departamento) }}"
+                                    <x-progress-bar current="{{ $contagem->progressoDepartamento($departamento) }}"
                                         total="{{ $departamento->patrimonios->count() }}" />
                                 </td>
                             </tr>

@@ -12,9 +12,8 @@ class progressBar extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public $min = 0,
-        public $progress,
-        public $total
+        public float $current,
+        public float $total
     ) {}
 
     /**
