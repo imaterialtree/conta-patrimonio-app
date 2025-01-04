@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Departamento extends Model
@@ -23,5 +24,10 @@ class Departamento extends Model
     public function patrimonios(): HasMany
     {
         return $this->hasMany(Patrimonio::class);
+    }
+
+    public function contagemPatrimonios():HasManyThrough
+    {
+        return $this->hasManyThrough(ContagemPatrimonio::class, Patrimonio::class);
     }
 }

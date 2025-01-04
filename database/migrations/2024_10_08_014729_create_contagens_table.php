@@ -26,10 +26,13 @@ return new class extends Migration
             $table->foreignId('contagem_id')->constrained('contagens');
             $table->foreignId('patrimonio_id')->constrained('patrimonios');
             $table->foreignId('usuario_id')->constrained('usuarios');
-            $table->foreignId('classificacao_proposta_id')->constrained('classificacoes');
+            $table->foreignId('classificacao_proposta_id')->nullable()->constrained('classificacoes');
             $table->string('foto')->nullable();
-            $table->boolean('nao_encontrado');
+            $table->boolean('nao_encontrado')->default(false);
             $table->text('justificativa')->nullable();
+            $table->timestamp('criado_em');
+            $table->timestamp('atualizado_em')->nullable();
+            $table->timestamp('finalizado_em')->nullable();
         });
 
         Schema::create('contagem_usuario', function (Blueprint $table) {

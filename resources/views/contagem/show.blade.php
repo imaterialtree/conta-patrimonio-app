@@ -54,5 +54,46 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <h1>Progresso da Contagem</h1>
+            <x-progress-bar current="{{ $contagem->progresso() }}" total="{{ $patrimonioTotal }}" />
+            {{-- TODO validar se pode finalizar contagem --}}
+            <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top"
+                title="Ainda faltam patrimônios a serem contabilizados" @disabled(true)>
+                Finalizar contagem
+            </button>
+            <button class="btn btn-link text-danger" data-bs-toggle="modal" data-bs-target="#cancelarContagem">
+                Cancelar contagem
+            </button>
+            @include('contagem.partials.cancel-form')
+        </div>
+        <div class="row">
+            <h2>Progresso por Departamentos</h2>
+        </div>
+        <div class="row">
+            <div class="card shadow-sm border-0 p-3">
+                <h5 class="card-title">Membros da Comissão de Contagem</h5>
+                <table id="tabela-servidores" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Departamento</th>
+                            <th>Patrimônios Contados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($departamentos as $departamento)
+                            <tr>
+                                <td>{{ $departamento['titulo'] }}</td>
+                                <td>
+                                    <x-progress-bar current="{{ $contagem->progressoDepartamento($departamento) }}"
+                                        total="{{ $departamento->patrimonios->count() }}" />
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 @endsection
