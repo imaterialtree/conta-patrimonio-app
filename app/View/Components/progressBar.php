@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class progress_bar extends Component
+class progressBar extends Component
 {
     /**
      * Create a new component instance.
