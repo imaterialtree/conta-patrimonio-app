@@ -18,6 +18,7 @@
             <!-- Topo -->
             <x-header />
 
+            <x-toast msgKey="{{ 'success' }}" />
             <!-- Conteúdo Principal -->
             <main class="container my-4">
                 @yield('content')
