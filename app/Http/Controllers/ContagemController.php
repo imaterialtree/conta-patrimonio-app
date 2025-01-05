@@ -10,27 +10,18 @@ use Illuminate\Http\Request;
 
 class ContagemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $contagens = Contagem::all();
         return view('contagem.index', compact('contagens'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $membros = Usuario::all();
         return view('contagem.create', compact('membros'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -46,9 +37,6 @@ class ContagemController extends Controller
         return to_route('contagens.show', $contagem);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Contagem $contagem)
     {
         $departamentos = Departamento::all();
@@ -58,25 +46,16 @@ class ContagemController extends Controller
         return view('contagem.show', compact('contagem', 'departamentos', 'contagemPatrimonios', 'patrimonioTotal'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //
