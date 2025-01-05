@@ -39,12 +39,19 @@ class UsuarioController extends Controller
 
     public function edit(Usuario $usuario)
     {
+        if (url()->previous() != url()->current()) {
+            session(['previousUrl' => url()->previous()]);
+        }
+
         return view('usuario.edit', compact('usuario'));
     }
 
-    public function update(Request $request, Usuario $usuario)
+    public function update(UsuarioRequest $request, Usuario $usuario)
     {
         $usuario->update($request->validated());
+        $previousUrl = session()->pull('previousUrl', route('usuarios.index'));
+
+        return redirect($previousUrl)->with('success', 'Usuário atualizado com sucesso');
     }
 
     public function destroy(Usuario $usuario)

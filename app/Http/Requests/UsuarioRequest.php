@@ -25,12 +25,14 @@ class UsuarioRequest extends FormRequest
      */
     public function rules(): array
     {
+        $usuarioId = $this->usuario?->id;
+
         return [
             'nome' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Usuario::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(Usuario::class)->ignore($usuarioId)],
             'senha' => ['confirmed', Rules\Password::defaults()],
-            'siape' => ['required', 'numeric', 'unique:'.Usuario::class],
-            'tipo' => ['required',Rule::in(['admin','comissao'])],
+            'siape' => ['required', 'numeric', Rule::unique(Usuario::class)->ignore($usuarioId)],
+            'tipo' => ['required', Rule::in(['admin', 'comissao'])],
         ];
     }
 
