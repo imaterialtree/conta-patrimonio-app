@@ -58,4 +58,9 @@ class UsuarioController extends Controller
     {
         $usuario->delete();
     }
+
+    public function perfil()
+    {
+        return view('comissao.perfil', ['usuario' => auth()->user(), 'voltar' => true]);
+    }
 }

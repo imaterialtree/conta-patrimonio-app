@@ -27,7 +27,7 @@ Route::resource('contagens', ContagemController::class)->parameters(['contagens'
 Route::prefix('comissao')->name('comissao.')
     ->middleware('auth')
     ->group(function () {
-        Route::view('home', 'comissao.home')->name('home');
+        Route::get('home', [ComissaoContagemController::class, 'index'])->name('home');
         Route::get('perfil', [UsuarioController::class, 'perfil'])->name('perfil');
         Route::view('config', 'comissao.config')->name('config');
     });
