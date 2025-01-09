@@ -28,6 +28,6 @@ Route::prefix('comissao')->name('comissao.')
     ->middleware('auth')
     ->group(function () {
         Route::view('home', 'comissao.home')->name('home');
-        Route::view('perfil', 'comissao.perfil')->name('perfil');
+        Route::get('perfil', [UsuarioController::class, 'perfil'])->name('perfil');
         Route::view('config', 'comissao.config')->name('config');
     });
