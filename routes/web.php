@@ -16,14 +16,15 @@ Route::get('/login', [AuthController::class, 'create'])->name('login');
 Route::post('/login', [AuthController::class, 'store']);
 Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::view('home', 'home')->name('home');
     Route::view('relatorios', 'relatorio.index')->name('relatorio.index');
     Route::view('patrimonios', 'patrimonio.index')->name('patrimonio.index');
+    Route::resource('usuarios', UsuarioController::class);
+    Route::resource('contagens', ContagemController::class)
+        ->parameters(['contagens' => 'contagem']);
 });
 
-Route::resource('usuarios', UsuarioController::class)->middleware('auth');
-Route::resource('contagens', ContagemController::class)->parameters(['contagens' => 'contagem'])->middleware('auth');
 
 Route::prefix('comissao')->name('comissao.')
     ->middleware('auth')
@@ -32,8 +33,8 @@ Route::prefix('comissao')->name('comissao.')
         Route::get('perfil', [UsuarioController::class, 'perfil'])->name('perfil');
         Route::view('config', 'comissao.config')->name('config');
 
-        Route::prefix('contagem')->name('contagem.')->group(function () {
-            Route::get('{contagem}/departamentos', [ComissaoContagemController::class, 'departamentos'])->name('departamentos');
-            Route::get('{contagem}/departamentos/{departamento}', [ComissaoContagemController::class, 'departamento'])->name('departamento');
+        Route::prefix('contagem/{contagem}')->name('contagem.')->group(function () {
+            Route::get('departamentos', [ComissaoContagemController::class, 'departamentos'])->name('departamentos');
+            Route::get('departamentos/{departamento}', [ComissaoContagemController::class, 'departamento'])->name('departamento');
         });
     });
