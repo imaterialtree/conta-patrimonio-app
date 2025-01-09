@@ -23,3 +23,11 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('usuarios', UsuarioController::class)->middleware('auth');
 Route::resource('contagens', ContagemController::class)->parameters(['contagens' => 'contagem'])->middleware('auth');
+
+Route::prefix('comissao')->name('comissao.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::view('home', 'comissao.home')->name('home');
+        Route::view('perfil', 'comissao.perfil')->name('perfil');
+        Route::view('config', 'comissao.config')->name('config');
+    });
