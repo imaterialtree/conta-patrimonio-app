@@ -13,12 +13,6 @@
             /* Espaço para a navbar fixa */
         }
 
-        header {
-            background: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 10px 20px;
-        }
-
         .navbar-bottom {
             position: fixed;
             bottom: 0;
@@ -53,9 +47,9 @@
     </style>
 </head>
 
-<body>
+<body class="pb-5">
     <!-- Header -->
-    <header class="d-flex justify-content-between align-items-center">
+    <header class="bg-white shadow-sm p-2 d-flex justify-content-between align-items-center">
         @if ($voltar ?? false)
             <button onclick="history.back()" class="btn btn-light">
                 <i class="bi bi-arrow-left"></i>
@@ -76,7 +70,7 @@
     <nav class="navbar-bottom">
         <a href="{{ route('comissao.home') }}" class="{{ request()->is('comissao/home') ? 'active' : '' }}">
             <i class="bi bi-house-door"></i>
-            <p>Contagem</p>
+            <p>Início</p>
         </a>
         <a href="{{ route('comissao.perfil') }}" class="{{ request()->is('comissao/perfil') ? 'active' : '' }}">
             <i class="bi bi-person"></i>

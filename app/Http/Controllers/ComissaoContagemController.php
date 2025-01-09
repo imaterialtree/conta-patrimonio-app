@@ -15,7 +15,7 @@ class ComissaoContagemController extends Controller
         $contagemExiste = Contagem::where('status', ContagemStatus::EM_ANDAMENTO)->exists();
         $contagem = $usuario->contagensComissao()->where('status', ContagemStatus::EM_ANDAMENTO)->first();
 
-        return view('comissao.home', compact('contagem', 'contagemExiste'));
+        return view('comissao.index', compact('contagem', 'contagemExiste'));
     }
     public function departamentos(Contagem $contagem)
     {
