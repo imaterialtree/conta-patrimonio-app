@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TipoUsuario;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -44,5 +45,10 @@ class Usuario extends Authenticatable
     public function contagensComissao(): BelongsToMany
     {
         return $this->belongsToMany(Contagem::class);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->tipo == TipoUsuario::ADMIN->value;
     }
 }
