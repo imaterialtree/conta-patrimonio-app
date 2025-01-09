@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ComissaoContagemController;
 use App\Http\Controllers\ContagemController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +31,9 @@ Route::prefix('comissao')->name('comissao.')
         Route::get('home', [ComissaoContagemController::class, 'index'])->name('home');
         Route::get('perfil', [UsuarioController::class, 'perfil'])->name('perfil');
         Route::view('config', 'comissao.config')->name('config');
+
+        Route::prefix('contagem')->name('contagem.')->group(function () {
+            Route::get('{contagem}/departamentos', [ComissaoContagemController::class, 'departamentos'])->name('departamentos');
+            Route::get('{contagem}/departamentos/{departamento}', [ComissaoContagemController::class, 'departamento'])->name('departamento');
+        });
     });
