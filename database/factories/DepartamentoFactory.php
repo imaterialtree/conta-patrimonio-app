@@ -17,6 +17,7 @@ class DepartamentoFactory extends Factory
     public function definition(): array
     {
         return [
+            'codigo' => fake()->unique()->regexify('[A-Z\d]{5}'),
             'titulo' => fake()->sentence(3),
         ];
     }

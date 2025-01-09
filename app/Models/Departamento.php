@@ -14,9 +14,10 @@ class Departamento extends Model
 
     const CREATED_AT = 'criado_em';
     const UPDATED_AT = 'atualizado_em';
-    const DELETED_AT = 'excluido_em';    
+    const DELETED_AT = 'excluido_em';
 
     protected $fillable = [
+        'codigo',
         'titulo',
     ];
 
@@ -26,7 +27,7 @@ class Departamento extends Model
         return $this->hasMany(Patrimonio::class);
     }
 
-    public function contagemPatrimonios():HasManyThrough
+    public function contagemPatrimonios(): HasManyThrough
     {
         return $this->hasManyThrough(ContagemPatrimonio::class, Patrimonio::class);
     }

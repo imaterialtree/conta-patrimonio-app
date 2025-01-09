@@ -17,15 +17,16 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
         });
-        
+
         Schema::create('departamentos', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo');
             $table->string('titulo');
             $table->timestamp('criado_em');
             $table->timestamp('atualizado_em')->nullable();
             $table->timestamp('excluido_em')->nullable();
         });
-        
+
         Schema::create('patrimonios', function (Blueprint $table) {
             $table->id();
             $table->string('codigo');
