@@ -9,29 +9,9 @@
 
             <form action="{{ route('usuarios.store') }}" method="POST">
                 @csrf
-                <div class="mb-3">
-                    <label for="nome" class="form-label">Nome de Usuário</label>
-                    <input type="text" id="nome" name="nome" class="form-control">
-                    @error('nome')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="email@domain.com">
-                    @error('email')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="siape" class="form-label">SIAPE</label>
-                    <input type="number" id="siape" name="siape" class="form-control @error('siape') is-invalid @enderror" placeholder="Número do SIAPE">
-                    @error('siape')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                <x-input type="text" id="nome" name="nome">Nome de Usuário</x-input>
+                <x-input type="email" id="email" name="email">Nome de Usuário</x-input>
+                <x-input type="number" id="siape" name="siape">Nome de Usuário</x-input>
 
                 <div class="mb-3">
                     <label for="tipo" class="form-label">Tipo</label>
