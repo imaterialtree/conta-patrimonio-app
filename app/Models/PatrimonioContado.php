@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ContagemPatrimonio extends Model
+class PatrimonioContado extends Model
 {
     protected $fillable = [
         'contagem_id',

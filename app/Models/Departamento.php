@@ -27,8 +27,8 @@ class Departamento extends Model
         return $this->hasMany(Patrimonio::class);
     }
 
-    public function contagemPatrimonios(): HasManyThrough
+    public function patrimoniosContados(): HasManyThrough
     {
-        return $this->hasManyThrough(ContagemPatrimonio::class, Patrimonio::class);
+        return $this->hasManyThrough(PatrimonioContado::class, Patrimonio::class);
     }
 }

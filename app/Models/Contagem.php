@@ -41,7 +41,7 @@ class Contagem extends Model
 
     public function patrimoniosContados(): HasMany
     {
-        return $this->hasMany(ContagemPatrimonio::class);
+        return $this->hasMany(PatrimonioContado::class);
     }
 
     public function progresso(): int

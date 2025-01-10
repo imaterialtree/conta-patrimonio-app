@@ -40,10 +40,10 @@ class ContagemController extends Controller
     public function show(Contagem $contagem)
     {
         $departamentos = Departamento::all();
-        $contagemPatrimonios = $contagem->contagemPatrimonios;
+        $patrimoniosContados = $contagem->patrimoniosContados;
         $contagem->nadaAver;
         $patrimonioTotal = Patrimonio::count();
-        return view('contagem.show', compact('contagem', 'departamentos', 'contagemPatrimonios', 'patrimonioTotal'));
+        return view('contagem.show', compact('contagem', 'departamentos', 'patrimoniosContados', 'patrimonioTotal'));
     }
 
     public function edit(string $id)
