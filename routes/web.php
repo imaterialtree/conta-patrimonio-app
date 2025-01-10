@@ -4,6 +4,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComissaoContagemController;
 use App\Http\Controllers\ContagemController;
+use App\Http\Controllers\DepartamentoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,6 +24,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('contagens', ContagemController::class)
         ->parameters(['contagens' => 'contagem']);
+    Route::resource('departamentos', DepartamentoController::class);
 });
 
 
