@@ -27,5 +27,10 @@
                 <i class="bi bi-people-fill me-2"></i> Gerenciar Usuários
             </a>
         </li>
+        <li class="nav-item mb-2">
+            <a href="{{ route('departamentos.index') }}" class="nav-link text-dark">
+                <i class="bi bi-building me-2"></i> Departamentos
+            </a>
+        </li>
     </ul>
 </div>
