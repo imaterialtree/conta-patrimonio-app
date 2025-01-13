@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PatrimonioContado extends Model
 {
+    protected $table = 'patrimonios_contados';
     protected $fillable = [
         'contagem_id',
         'patrimonio_id',

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamp('finalizado_em')->nullable();
         });
 
-        Schema::create('contagem_patrimonios', function (Blueprint $table) {
+        Schema::create('patrimonios_contados', function (Blueprint $table) {
             $table->id();
             $table->foreignId('contagem_id')->constrained('contagens');
             $table->foreignId('patrimonio_id')->constrained('patrimonios');
