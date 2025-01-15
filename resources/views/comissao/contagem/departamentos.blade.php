@@ -26,7 +26,7 @@
             <tbody>
                 <!-- Exemplo de departamentos preenchidos dinamicamente -->
                 @foreach ($departamentos as $departamento)
-                    <tr class="{{ $departamento->status_color }}">
+                    <tr class="{{ $departamento->status_color }} position-relative">
                         <td>{{ $departamento->codigo }}</td>
                         <td>{{ $departamento->titulo }}</td>
                         <td>
@@ -34,6 +34,8 @@
                                 {{ $departamento->status }}
                             </span>
                         </td>
+                        <a class="stretched-link"
+                            href="{{ route('comissao.contagem.patrimonios.index', $departamento) }}"></a>
                     </tr>
                 @endforeach
             </tbody>
