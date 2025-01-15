@@ -30,7 +30,14 @@ class DepartamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|text|max:255',
+            'codigo' => 'required|numeric',
+        ]);
+        Departamento::create($request->all());
+
+        return redirect()->route('departamentos.index')
+            ->with('success', 'Departamento criado com sucesso!');
     }
 
     /**
@@ -38,7 +45,7 @@ class DepartamentoController extends Controller
      */
     public function show(Departamento $departamento)
     {
-        return view('departamento.show');
+        return view('departamento.show', compact('departamento'));
     }
 
     /**
@@ -54,7 +61,14 @@ class DepartamentoController extends Controller
      */
     public function update(Request $request, Departamento $departamento)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|text|max:255',
+            'codigo' => 'required|numeric',
+        ]);
+        $departamento->update($request->all());
+
+        return redirect()->route('departamentos.show', $departamento)
+            ->with('success', 'Departamento atualizado com sucesso!');
     }
 
     /**
@@ -64,6 +78,7 @@ class DepartamentoController extends Controller
     {
         $departamento->delete();
 
-        return redirect()->route('departamentos.index');
+        return redirect()->route('departamentos.index')
+            ->with('success', 'Departamento deletado com sucesso!');
     }
 }
