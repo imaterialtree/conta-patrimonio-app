@@ -10,8 +10,22 @@
 
 <body>
     <div class="container vh-100 d-flex justify-content-center align-items-center">
+        @if ($errors->any())
+            <x-toast type="danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </x-toast>
+        @endif
+
         <div class="col-lg-4 col-10">
-            @include('partials.errors')
+            <div class="text-center">
+                <i class="bi bi-boxes fs-1"></i>
+                <h1 class="h3">Conta Patrimônio</h1>
+            </div>
+
             <div class="text-center mb-4">
                 <h3 class="text-muted">Fazer login</h3>
                 <hr>
@@ -20,11 +34,13 @@
                 @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email"
+                        required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="password" name="senha" placeholder="Senha" required>
+                    <input type="password" class="form-control" id="password" name="senha" placeholder="Senha"
+                        required>
                 </div>
                 <div class="d-flex justify-content-center mb-3">
                     <a href="#" class="text-decoration-none">Esqueceu a senha?</a>
@@ -41,4 +57,5 @@
         </div>
     </div>
 </body>
+
 </html>

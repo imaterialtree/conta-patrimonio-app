@@ -5,8 +5,6 @@
         <div class="card-body">
             <h2 class="card-title h4 mb-4">Editar Usuário</h2>
 
-            @include('partials.errors')
-
             <form action="{{ route('usuarios.update', $usuario) }}" method="POST">
                 @csrf
                 @method('PUT')

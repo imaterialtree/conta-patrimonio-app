@@ -1,14 +1,9 @@
-@if (session($msgKey))
-    <div class="toast-container position-fixed p-3">
-        <div class="toast align-items-center text-bg-success border-0 show fade" role="alert" aria-live="assertive"
-            aria-atomic="true" data-bs-config='{"delay":3000, "autohide":true}'>
-            <div class="d-flex">
-                <div class="toast-body">
-                    {{ session($msgKey) }}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                    aria-label="Close"></button>
-            </div>
+<div class="toast-container position-fixed p-3">
+    <div {{ $attributes->class('toast align-items-center border-0 show fade') }} role="alert" aria-live="assertive"
+        aria-atomic="true" data-bs-config='{"delay":3000, "autohide":true}'>
+        <div class="alert alert-{{ $type }} alert-dismissible show fade" role="alert">
+            <div>{{ $slot }}</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>
-@endif
+</div>

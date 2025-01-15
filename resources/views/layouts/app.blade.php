@@ -18,7 +18,24 @@
             <!-- Topo -->
             <x-header />
 
-            <x-toast msgKey="{{ 'success' }}" />
+            @if (session()->has('success'))
+                <x-toast>
+                    <div class="text-bg-success">
+                        {{ session('success') }}
+                    </div>
+                </x-toast>
+            @endif
+
+            @if ($errors->any())
+                <x-toast type="danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </x-toast>
+            @endif
+
             <!-- Conteúdo Principal -->
             <main class="container my-4">
                 @yield('content')

@@ -11,8 +11,6 @@
             </button>
         </div>
 
-        @include('partials.errors')
-
         <!-- Seção de Comissão -->
         <h4 class="mb-3">Criar comissão para contagem do inventário</h4>
         <div class="row">

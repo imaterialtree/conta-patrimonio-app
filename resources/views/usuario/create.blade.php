@@ -5,8 +5,6 @@
         <div class="card-body">
             <h2 class="card-title h4 mb-4">Criar novo usuário</h2>
 
-            @include('partials.errors')
-
             <form action="{{ route('usuarios.store') }}" method="POST">
                 @csrf
                 <x-input type="text" id="nome" name="nome" with-old-value>Nome</x-input>
