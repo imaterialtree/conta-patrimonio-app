@@ -9,9 +9,9 @@
 
             <form action="{{ route('usuarios.store') }}" method="POST">
                 @csrf
-                <x-input type="text" id="nome" name="nome">Nome de Usuário</x-input>
-                <x-input type="email" id="email" name="email">Nome de Usuário</x-input>
-                <x-input type="number" id="siape" name="siape">Nome de Usuário</x-input>
+                <x-input type="text" id="nome" name="nome" with-old-value>Nome</x-input>
+                <x-input type="email" id="email" name="email" with-old-value>Email</x-input>
+                <x-input type="number" id="siape" name="siape" with-old-value>SIAPE</x-input>
 
                 <div class="mb-3">
                     <label for="tipo" class="form-label">Tipo</label>

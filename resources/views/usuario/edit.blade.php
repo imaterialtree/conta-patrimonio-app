@@ -10,37 +10,15 @@
             <form action="{{ route('usuarios.update', $usuario) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="mb-3">
-                    <label for="nome" class="form-label">Nome de Usuário</label>
-                    <input type="text" id="nome" name="nome" class="form-control" value="{{ $usuario->nome }}">
-                    @error('nome')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" name="email"
-                        class="form-control @error('email') is-invalid @enderror" placeholder="email@domain.com"
-                        value="{{ $usuario->email }}">
-                    @error('email')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="siape" class="form-label">SIAPE</label>
-                    <input type="numeric" id="siape" name="siape" class="form-control" value="{{ $usuario->siape }}">
-                    @error('siape')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                <x-input type="text" id="nome" name="nome" value="{{ $usuario->nome }}">Nome</x-input>
+                <x-input type="email" id="email" name="email" value="{{ $usuario->email }}">Email</x-input>
+                <x-input type="number" id="siape" name="siape" value="{{ $usuario->siape }}">SIAPE</x-input>
 
                 <div class="mb-3">
                     <label for="tipo" class="form-label">Tipo</label>
-                    <select id="tipo" name="tipo" class="form-control">
-                        <option value="admin" @selected($usuario->tipo == 'admin')>Administrador do sistema</option>
-                        <option value="comissao" @selected($usuario->tipo == 'comissao')>Membro da Comissão de Contagem</option>
+                    <select id="tipo" name="tipo" class="form-select">
+                        <option value="admin" @selected($usuario->isAdmin())>Administrador do sistema</option>
+                        <option value="comissao" @selected(!$usuario->isAdmin())>Membro da Comissão de Contagem</option>
                     </select>
                     @error('tipo')
                         <div class="invalid-feedback">{{ $message }}</div>
