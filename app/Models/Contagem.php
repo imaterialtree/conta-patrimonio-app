@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use App\Enums\PatrimonioStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Contagem extends Model
 {
@@ -16,6 +16,7 @@ class Contagem extends Model
     protected $table = 'contagens';
 
     const CREATED_AT = 'criado_em';
+
     const UPDATED_AT = 'atualizado_em';
 
     protected $fillable = [
@@ -57,5 +58,20 @@ class Contagem extends Model
     public function progressoDepartamento(Departamento $departamento): int
     {
         return $this->patrimoniosContadosDepartamento($departamento)->count();
+    }
+
+    public function patrimonioStatus(Patrimonio $patrimonio): PatrimonioStatus
+    {
+        $patrimonioContado = $this->patrimoniosContados()->where('patrimonio_id', $patrimonio->id)->first();
+
+        if ($patrimonioContado === null) {
+            return PatrimonioStatus::NAO_LIDO;
+        }
+
+        return match ((bool) $patrimonioContado->naoEncontrado) {
+
+            true => PatrimonioStatus::NAO_ENCONTRADO,
+            false => PatrimonioStatus::LIDO,
+        };
     }
 }

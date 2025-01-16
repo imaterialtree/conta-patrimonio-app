@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\BelongsToManyRelationship;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -24,9 +26,9 @@ class Patrimonio extends Model
     ];
 
     // Relacionamento
-    public function classificacao(): HasOne
+    public function classificacao(): BelongsTo
     {
-        return $this->hasOne(Classificacao::class);
+        return $this->belongsTo(Classificacao::class);
     }
 
     public function departamento(): HasOne
