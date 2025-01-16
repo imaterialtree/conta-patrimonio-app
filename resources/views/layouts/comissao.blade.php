@@ -49,16 +49,13 @@
 
 <body class="pb-5">
     <!-- Header -->
-    <header class="bg-white shadow-sm p-2 d-flex justify-content-between align-items-center">
-        @if ($voltar ?? false)
-            <button onclick="history.back()" class="btn btn-light">
+    <header class="bg-white shadow-sm p-2 d-flex justify-content-center align-items-center position-relative">
+        @if ($voltarPara ?? false)
+            <a href="{{ $voltarPara }}" class="btn btn-light position-absolute start-0">
                 <i class="bi bi-arrow-left"></i>
-            </button>
-        @else
-            <div></div>
+            </a>
         @endif
         <h5 class="m-0">@yield('title', 'Inventariado')</h5>
-        <div></div>
     </header>
 
     @if (session()->has('success'))
