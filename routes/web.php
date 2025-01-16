@@ -1,15 +1,19 @@
 <?php
 
-use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComissaoContagemController;
 use App\Http\Controllers\ContagemController;
 use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\PatrimonioContadoController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return to_route('home');
-});
+    $isAdmin = auth()->user()->isAdmin();
+    dd($isAdmin);
+
+    return to_route($isAdmin ? 'home' : 'comissao.home');
+})->middleware('auth');
 
 Route::resource('usuarios', UsuarioController::class);
 
@@ -27,7 +31,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('departamentos', DepartamentoController::class);
 });
 
-
 Route::prefix('comissao')->name('comissao.')
     ->middleware('auth')
     ->group(function () {
@@ -37,6 +40,9 @@ Route::prefix('comissao')->name('comissao.')
 
         Route::prefix('contagem/{contagem}')->name('contagem.')->group(function () {
             Route::get('departamentos', [ComissaoContagemController::class, 'departamentos'])->name('departamentos');
-            Route::get('departamentos/{departamento}', [ComissaoContagemController::class, 'departamento'])->name('departamento');
+            Route::get('departamentos/{departamento}/patrimonios', [PatrimonioContadoController::class, 'index'])->name('patrimonios.index');
+            Route::get('departamentos/{departamento}/patrimonios/{patrimonio}', [PatrimonioContadoController::class, 'show'])->name('patrimonios.show');
+            Route::put('departamentos/{departamento}/patrimonios/{patrimonio}', [PatrimonioContadoController::class, 'save'])->name('patrimonios.save');
+            Route::post('departamentos/{departamento}/patrimonios/{patrimonio}', [PatrimonioContadoController::class, 'store'])->name('patrimonios.store');
         });
     });
