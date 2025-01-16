@@ -58,11 +58,17 @@
         <div class="row">
             <h1>Progresso da Contagem</h1>
             <x-progress-bar current="{{ $contagem->progresso() }}" total="{{ $patrimonioTotal }}" />
-            {{-- TODO validar se pode finalizar contagem --}}
-            <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top"
-                title="Ainda faltam patrimônios a serem contabilizados" @disabled(true)>
-                Finalizar contagem
-            </button>
+
+            @if (is_null($contagem->finalizado_em))
+                <form action="{{ route('contagens.finalizar', $contagem->id) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit" class="btn btn-warning col-12" @disabled(!$contagem->podeFinalizar())>
+                        Finalizar contagem
+                    </button>
+                </form>
+            @endif
+
             <button class="btn btn-link text-danger" data-bs-toggle="modal" data-bs-target="#cancelarContagem">
                 Cancelar contagem
             </button>

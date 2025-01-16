@@ -73,4 +73,9 @@ class Contagem extends Model
             false => PatrimonioStatus::LIDO,
         };
     }
+
+    public function podeFinalizar(): bool
+    {
+        return $this->status === 'Em andamento' && $this->progresso() === Patrimonio::count();
+    }
 }

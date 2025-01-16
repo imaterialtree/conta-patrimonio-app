@@ -13,12 +13,14 @@ class ContagemController extends Controller
     public function index()
     {
         $contagens = Contagem::all();
+
         return view('contagem.index', compact('contagens'));
     }
 
     public function create()
     {
         $membros = Usuario::all();
+
         return view('contagem.create', compact('membros'));
     }
 
@@ -41,8 +43,8 @@ class ContagemController extends Controller
     {
         $departamentos = Departamento::all();
         $patrimoniosContados = $contagem->patrimoniosContados;
-        $contagem->nadaAver;
         $patrimonioTotal = Patrimonio::count();
+
         return view('contagem.show', compact('contagem', 'departamentos', 'patrimoniosContados', 'patrimonioTotal'));
     }
 
@@ -59,5 +61,15 @@ class ContagemController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function finalizar(Contagem $contagem)
+    {
+        $contagem->update([
+            'status' => 'Finalizado',
+            'finalizado_em' => now(),
+        ]);
+
+        return back();
     }
 }
