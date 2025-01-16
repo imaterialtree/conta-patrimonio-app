@@ -27,7 +27,8 @@ class AuthController extends Controller
 
         if ($usuario  && Hash::check($senha, $usuario?->senha)) {
             Auth::login($usuario);
-            return redirect()->intended('home');
+            $defaultPage = $usuario->isAdmin() ? 'home' : 'comissao.home';
+            return redirect()->route($defaultPage);
         }
 
         return back()->withErrors([
