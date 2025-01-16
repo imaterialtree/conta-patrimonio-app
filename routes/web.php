@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $isAdmin = auth()->user()->isAdmin();
-    dd($isAdmin);
 
     return to_route($isAdmin ? 'home' : 'comissao.home');
 })->middleware('auth');
