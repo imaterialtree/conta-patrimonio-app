@@ -41,7 +41,7 @@ Route::prefix('comissao')->name('comissao.')
             Route::get('departamentos', [ComissaoContagemController::class, 'departamentos'])->name('departamentos');
             Route::get('departamentos/{departamento}/patrimonios', [PatrimonioContadoController::class, 'index'])->name('patrimonios.index');
             Route::get('departamentos/{departamento}/patrimonios/{patrimonio}', [PatrimonioContadoController::class, 'show'])->name('patrimonios.show');
-            Route::put('departamentos/{departamento}/patrimonios/{patrimonio}', [PatrimonioContadoController::class, 'save'])->name('patrimonios.save');
+            Route::put('departamentos/{departamento}/patrimonios/{patrimonio}', [PatrimonioContadoController::class, 'update'])->name('patrimonios.update');
             Route::post('departamentos/{departamento}/patrimonios/{patrimonio}', [PatrimonioContadoController::class, 'store'])->name('patrimonios.store');
         });
     });

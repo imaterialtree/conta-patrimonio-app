@@ -68,8 +68,7 @@ class Contagem extends Model
             return PatrimonioStatus::NAO_LIDO;
         }
 
-        return match ((bool) $patrimonioContado->naoEncontrado) {
-
+        return match ((bool) $patrimonioContado->nao_encontrado) {
             true => PatrimonioStatus::NAO_ENCONTRADO,
             false => PatrimonioStatus::LIDO,
         };

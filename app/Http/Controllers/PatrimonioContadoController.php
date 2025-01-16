@@ -30,10 +30,16 @@ class PatrimonioContadoController extends Controller
 
     public function store(Request $request, Contagem $contagem, Departamento $departamento, Patrimonio $patrimonio)
     {
-        if (PatrimonioContado::where('patrimonio_id', $patrimonio->id)->exists()) {
-            return redirect()->route('comissao.contagem.patrimonios.index', $departamento)
+        $request->validate([
+            'nao_encontrado' => 'nullable|boolean',
+            'classificacao_proposta_id' => 'nullable|exists:classificacoes,id',
+        ]);
+
+        if ($contagem->patrimoniosContados()->whereBelongsTo($patrimonio)->exists()) {
+            return redirect()->route('comissao.contagem.patrimonios.index', [$contagem, $departamento])
                 ->with('error', 'Patrimônio já foi lido!');
         }
+
         $patrimonio = PatrimonioContado::create([
             'contagem_id' => $contagem->id,
             'departamento_id' => $departamento->id,
@@ -41,7 +47,7 @@ class PatrimonioContadoController extends Controller
             'usuario_id' => auth()->user()->id,
         ]);
 
-        return redirect()->route('comissao.contagem.patrimonios.index', [$contagem, $departamento, $patrimonio])
+        return redirect()->route('comissao.contagem.patrimonios.index', [$contagem, $departamento])
             ->with('success', 'Patrimônio foi lido com sucesso!');
     }
 
@@ -50,13 +56,32 @@ class PatrimonioContadoController extends Controller
         return view('comissao.contagem.patrimonios.edit', compact('departamento', 'patrimonio', 'patrimonioContado'));
     }
 
-    public function update(Request $request, Contagem $contagem, Departamento $departamento, PatrimonioContado $patrimonioContado)
+    public function update(Request $request, Contagem $contagem, Departamento $departamento, Patrimonio $patrimonio)
     {
         $validated = $request->validate([
-            'nome' => 'required|string|max:255',
-            'descricao' => 'nullable|string',
-            // 'valor' => 'required|numeric',
+            'classificacao_proposta_id' => 'nullable|exists:classificacoes,id',
+            'foto' => 'nullable|image',
+            'nao_encontrado' => 'nullable|boolean',
         ]);
+
+        // criar se não existe
+        $patrimonioContado = $contagem->patrimoniosContados()->whereBelongsTo($patrimonio)->first();
+        if (empty($patrimonioContado)) {
+            $patrimonioContado = PatrimonioContado::create([
+                'contagem_id' => $contagem->id,
+                'departamento_id' => $departamento->id,
+                'patrimonio_id' => $patrimonio->id,
+                'usuario_id' => auth()->user()->id,
+            ]);
+        }
+
+        if ($request->nao_encontrado) {
+            $patrimonioContado->nao_encontrado = true;
+            $patrimonioContado->save();
+
+            return redirect()->route('comissao.contagem.patrimonios.index', [$contagem, $departamento])
+                ->with('success', 'Patrimônio foi marcado como não encontrado!');
+        }
 
         $patrimonioContado->update($validated);
 
@@ -69,6 +94,6 @@ class PatrimonioContadoController extends Controller
         $patrimonioContado->delete();
 
         return redirect()->route('comissao.contagem.patrimonios.index', $departamento)
-            ->with('success', 'Patrimônio foi deletado com sucesso!');
+            ->with('success', 'Patrimônio foi retornado para não contado!');
     }
 }
