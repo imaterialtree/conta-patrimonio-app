@@ -26,15 +26,7 @@
                 </x-toast>
             @endif
 
-            @if ($errors->any())
-                <x-toast type="danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </x-toast>
-            @endif
+            @include('partials.errors')
 
             <!-- Conteúdo Principal -->
             <main class="container my-4">

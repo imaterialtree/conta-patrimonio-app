@@ -9,18 +9,7 @@
 </head>
 
 <body>
-    @if ($errors->any())
-        <div class="d-flex justify-content-center">
-            <x-toast type="danger">
-                <ul class="list-unstyled">
-                    <i class="bi bi-exclamation-circle text-danger"></i>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </x-toast>
-        </div>
-    @endif
+    @include('partials.errors')
     <div class="container vh-100 d-flex justify-content-center align-items-center">
 
         <div class="col-lg-4 col-10">
