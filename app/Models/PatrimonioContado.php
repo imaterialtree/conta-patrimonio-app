@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PatrimonioContado extends Model
 {
     protected $table = 'patrimonios_contados';
+
+    const CREATED_AT = 'criado_em';
+
+    const UPDATED_AT = 'atualizado_em';
+
+    const DELETED_AT = 'excluido_em';
+
     protected $fillable = [
         'contagem_id',
         'patrimonio_id',
@@ -38,12 +45,7 @@ class PatrimonioContado extends Model
         return $this->belongsTo(Usuario::class);
     }
 
-    public function novaClassificacao(): BelongsTo
-    {
-        return $this->belongsTo(Classificacao::class);
-    }
-
-    public function antigaClassificacao(): BelongsTo
+    public function classificacaoProposta(): BelongsTo
     {
         return $this->belongsTo(Classificacao::class);
     }
