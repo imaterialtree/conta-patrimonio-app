@@ -18,9 +18,9 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Código</th>
-                    <th>Departamento</th>
-                    <th>Progresso</th>
+                    <th class="col-3">Código</th>
+                    <th class="col-6">Departamento</th>
+                    <th class="col-3">Progresso</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,12 +30,10 @@
                         <td>{{ $departamento->codigo }}</td>
                         <td>{{ $departamento->titulo }}</td>
                         <td>
-                            <span class="badge {{ $departamento->badge_class }}">
-                                {{ $departamento->status }}
-                            </span>
+                            {{ $contagem->progressoDepartamento($departamento) }}/{{ $departamento->patrimonios->count() }}
+                            <a class="stretched-link"
+                                href="{{ route('comissao.contagem.patrimonios.index', [$contagem, $departamento]) }}"></a>
                         </td>
-                        <a class="stretched-link"
-                            href="{{ route('comissao.contagem.patrimonios.index', $departamento) }}"></a>
                     </tr>
                 @endforeach
             </tbody>

@@ -20,7 +20,7 @@ class ComissaoContagemController extends Controller
     public function departamentos(Contagem $contagem)
     {
         $departamentos = Departamento::all();
-
+        
         return view('comissao.contagem.departamentos', compact('departamentos', 'contagem'));
     }
 }
