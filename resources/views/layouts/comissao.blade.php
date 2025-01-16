@@ -61,6 +61,22 @@
         <div></div>
     </header>
 
+    @if (session()->has('success'))
+        <x-toast type="success">
+            {{ session('success') }}
+        </x-toast>
+    @endif
+
+    @if ($errors->any())
+        <x-toast type="danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </x-toast>
+    @endif
+
     <!-- Conteúdo Principal -->
     <main class="container my-3">
         @yield('content')
