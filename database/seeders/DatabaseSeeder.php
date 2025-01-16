@@ -15,8 +15,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Usuario::firstOrCreate(
-            ['email' => 'naoki@email.com'],
-            ['nome' => 'Naoki', 'email' => 'naoki@email.com', 'senha' => Hash::make('senha123'), 'tipo' => 'admin']
+            ['email' => 'admin@email'],
+            ['nome' => 'Admin User', 'email' => 'admin@email', 'senha' => Hash::make('senha123'), 'tipo' => 'admin']
+        );
+
+        Usuario::firstOrCreate(
+            ['email' => 'comissao@email'],
+            ['nome' => 'Comissao User', 'email' => 'comissao@email', 'senha' => Hash::make('senha123'), 'tipo' => 'comissao']
         );
 
         $this->call([
