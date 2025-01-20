@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ContagemStatus;
 use App\Models\Contagem;
 use App\Models\Departamento;
 use App\Models\Patrimonio;
@@ -68,6 +69,15 @@ class ContagemController extends Controller
         $contagem->update([
             'status' => 'Finalizado',
             'finalizado_em' => now(),
+        ]);
+
+        return back();
+    }
+
+    public function cancelar(Contagem $contagem)
+    {
+        $contagem->update([
+            'status' => ContagemStatus::CANCELADO,
         ]);
 
         return back();

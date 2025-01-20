@@ -27,6 +27,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('contagens', ContagemController::class)
         ->parameters(['contagens' => 'contagem']);
+    Route::put('contagens/{contagem}/finalizar', [ContagemController::class, 'finalizar'])->name('contagens.finalizar');
+    Route::put('contagens/{contagem}/cancelar', [ContagemController::class, 'cancelar'])->name('contagens.cancelar');
     Route::resource('departamentos', DepartamentoController::class);
 });
 

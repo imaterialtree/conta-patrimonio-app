@@ -59,7 +59,7 @@
             <h1>Progresso da Contagem</h1>
             <x-progress-bar current="{{ $contagem->progresso() }}" total="{{ $patrimonioTotal }}" />
 
-            @if (is_null($contagem->finalizado_em))
+            @if (is_null($contagem->finalizado_em) && $contagem->status == 'Em andamento')
                 <form action="{{ route('contagens.finalizar', $contagem->id) }}" method="POST" class="d-inline">
                     @csrf
                     @method('PUT')
@@ -67,12 +67,12 @@
                         Finalizar contagem
                     </button>
                 </form>
+                <button class="btn btn-link text-danger" data-bs-toggle="modal" data-bs-target="#cancelarContagem">
+                    Cancelar contagem
+                </button>
+                @include('contagem.partials.cancel-form')
             @endif
 
-            <button class="btn btn-link text-danger" data-bs-toggle="modal" data-bs-target="#cancelarContagem">
-                Cancelar contagem
-            </button>
-            @include('contagem.partials.cancel-form')
         </div>
         <div class="row">
             <h2>Progresso por Departamentos</h2>
