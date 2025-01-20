@@ -31,7 +31,7 @@ class DepartamentoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'titulo' => 'required|text|max:255',
+            'titulo' => 'required|max:255',
             'codigo' => 'required|numeric',
         ]);
         Departamento::create($request->all());

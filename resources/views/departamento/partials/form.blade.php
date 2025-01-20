@@ -1,14 +1,12 @@
-@props(['action', 'method' => 'POST', 'departamento'])
+@props(['action', 'method' => 'POST', 'departamento' => null])
 
 <form action="{{ $action }}" method="POST">
     @csrf
     @method($method)
-    <x-input type="text" name="titulo" id="titulo"
-        @if ($departamento) value="{{ $departamento->titulo }}" @else with-old-value @endif>
+    <x-input type="text" name="titulo" id="titulo" value="{{ $departamento?->titulo }}" with-old-value>
         Nome do Departamento
     </x-input>
-    <x-input type="number" name="codigo" id="codigo"
-        @if ($departamento) value="{{ $departamento?->codigo }}" @else with-old-value @endif>
+    <x-input type="text" name="codigo" id="codigo" value="{{ $departamento?->codigo }}" with-old-value>
         Codigo do Departamento
     </x-input>
 
