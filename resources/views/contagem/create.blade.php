@@ -94,9 +94,8 @@
                     botao.innerHTML = `<i class="bi bi-arrow-right-circle"></i>`;
 
                     membros.push(botao.value);
-                    linha.children[0] = '';
-                    linha.children[2] = celula;
-                    // linha.appendChild(celula);
+                    linha.removeChild(celula);
+                    linha.appendChild(celula);
                     tabelaComissao.appendChild(linha);
                 }
             });
@@ -116,10 +115,8 @@
                     if (index !== -1) {
                         membros.splice(index, 1);
                     }
-                    linha.children[0] = celula;
-                    linha.children[2] = '';
-                    // linha.removeChild(celula);
-                    // linha.appendChild(celula);
+                    linha.removeChild(celula);
+                    linha.insertBefore(celula, linha.firstChild);
                     tabelaServidores.appendChild(linha);
                 }
             });
