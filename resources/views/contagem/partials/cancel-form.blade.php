@@ -17,7 +17,7 @@
             <div class="modal-footer">
                 <form method="post" action="{{ route('contagens.cancelar', $contagem) }}" class="p-6">
                     @csrf
-                    @method('delete')
+                    @method('put')
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         {{ __('Cancelar') }}

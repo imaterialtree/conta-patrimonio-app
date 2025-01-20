@@ -56,7 +56,12 @@
         </div>
 
         <div class="row">
-            <h1>Progresso da Contagem</h1>
+            <h1 class="mb-3">Progresso da Contagem</h1>
+            @if ($contagem->status == \App\Enums\ContagemStatus::CANCELADO->value)
+                <div class="alert alert-danger" role="alert">
+                    Esta contagem foi cancelada.
+                </div>
+            @endif
             <x-progress-bar current="{{ $contagem->progresso() }}" total="{{ $patrimonioTotal }}" />
 
             @if (is_null($contagem->finalizado_em) && $contagem->status == 'Em andamento')
