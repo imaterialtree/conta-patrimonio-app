@@ -51,11 +51,22 @@
     <!-- Header -->
     <header class="bg-white shadow-sm p-2 d-flex justify-content-center align-items-center position-relative">
         @if ($voltarPara ?? false)
-            <a href="{{ $voltarPara }}" class="btn btn-light position-absolute start-0">
+            <a href="{{ $voltarPara }}" class="btn btn-light position-absolute start-0 ms-3">
                 <i class="bi bi-arrow-left"></i>
             </a>
         @endif
+
         <h5 class="m-0">@yield('title', 'Inventariado')</h5>
+
+        <div class="position-absolute end-0 me-3">
+            <a href="{{ route('logout') }}"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="bi bi-box-arrow-right"></i> Sair
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </div>
     </header>
 
     @if (session()->has('success'))
