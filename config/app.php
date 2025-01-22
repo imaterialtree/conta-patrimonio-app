@@ -128,6 +128,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         'PatrimonioStatus' => App\Enums\PatrimonioStatus::class,
         'ClassificacaoEnum' => App\Enums\ClassificacaoEnum::class,
+        'ContagemStatus' => App\Enums\ContagemStatus::class,
     ])->toArray(),
 
 ];
