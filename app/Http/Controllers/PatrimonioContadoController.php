@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ClassificacaoEnum;
 use App\Models\Contagem;
 use App\Models\Departamento;
 use App\Models\Patrimonio;
 use App\Models\PatrimonioContado;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PatrimonioContadoController extends Controller
 {
@@ -20,7 +22,14 @@ class PatrimonioContadoController extends Controller
 
     public function show(Contagem $contagem, Departamento $departamento, Patrimonio $patrimonio)
     {
-        return view('comissao.contagem.patrimonios.show', compact('contagem', 'departamento', 'patrimonio'));
+        $patrimonioContado = $contagem->patrimoniosContados()->whereBelongsTo($patrimonio)->first();
+        $oldClassificacaoProposta = $patrimonioContado?->classificacao_proposta_id
+            ? ClassificacaoEnum::fromId($patrimonioContado->classificacao_proposta_id)
+            : null;
+        
+        // return $patrimonioContado;
+        // return  compact('contagem', 'departamento', 'patrimonio', 'oldClassificacaoProposta');
+        return view('comissao.contagem.patrimonios.show', compact('contagem', 'departamento', 'patrimonio', 'oldClassificacaoProposta'));
     }
 
     public function create(Departamento $departamento)
@@ -67,10 +76,14 @@ class PatrimonioContadoController extends Controller
     public function update(Request $request, Contagem $contagem, Departamento $departamento, Patrimonio $patrimonio)
     {
         $validated = $request->validate([
-            'classificacao_proposta_id' => 'nullable|exists:classificacoes,id',
+            'classificacao_proposta_id' => ['nullable', 'exists:classificacoes,id'],
             'foto' => 'nullable|image',
             'nao_encontrado' => 'nullable|boolean',
         ]);
+
+        if (!$request->hasAny(['classificacao_proposta_id', 'foto', 'nao_encontrado'])) {
+            return back()->withErrors(['classificacao_proposta' => 'Nenhuma alteração foi feita!'])->withInput();
+        }
 
         // criar se não existe
         $patrimonioContado = $contagem->patrimoniosContados()->whereBelongsTo($patrimonio)->first();
@@ -93,8 +106,8 @@ class PatrimonioContadoController extends Controller
 
         $patrimonioContado->update($validated);
 
-        return redirect()->route('comissao.contagem.patrimonios.index', $departamento)
-            ->with('success', 'Patrimônio foi atualizado com sucesso!');
+        return redirect()->route('comissao.contagem.patrimonios.index', [$contagem, $departamento])
+            ->with('success', 'Proposta de classificação salva!');
     }
 
     public function destroy(Departamento $departamento, PatrimonioContado $patrimonioContado)

@@ -41,22 +41,25 @@
                         <p>{{ $patrimonio->classificacao->titulo }}</p>
                     </div>
 
-                    <div class="form-group mb-3 row collapse" id="collapseClassificacaoProposta">
+                    <div class="form-check mb-4">
+                        <input type="checkbox" id="nao_encontrado" name="nao_encontrado" class="form-check-input"
+                            value="1" data-bs-toggle="collapse" data-bs-target="#collapseClassificacaoProposta">
+                        <label for="nao_encontrado" class="form-check-label">Patrimônio não encontrado</label>
+                    </div>
+
+                    <div class="form-group mb-3 row collapse show" id="collapseClassificacaoProposta">
                         <label for="classificacao_proposta" class="form-label"><strong>Sugerir nova
                                 Classificação</strong></label>
-                        <select id="classificacao_proposta" name="classificacao_proposta" class="form-select">
-                            <option value="" selected>Escolha uma classificação</option>
+                        <select id="classificacao_proposta" name="classificacao_proposta_id" class="form-select">
+                            <option value="" @selected(is_null($oldClassificacaoProposta))>Escolha uma classificação</option>
                             @foreach (ClassificacaoEnum::cases() as $classificacao)
-                                <option value="{{ $classificacao }}">{{ $classificacao }}</option>
+                                <option value="{{ $classificacao->getId() }}" @selected($oldClassificacaoProposta == $classificacao)>
+                                    {{ $classificacao }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
 
-                    <div class="form-check mb-4">
-                        <input type="checkbox" id="nao_encontrado" name="nao_encontrado" class="form-check-input"
-                            value="1">
-                        <label for="nao_encontrado" class="form-check-label">Patrimônio não encontrado</label>
-                    </div>
 
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Salvar</button>
@@ -66,23 +69,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const naoEncontradoCheckbox = document.getElementById('nao_encontrado');
-            const classificacaoInput = document.getElementById('collapseClassificacaoProposta');
-
-            function toggleInputs() {
-                if (naoEncontradoCheckbox.checked) {
-                    classificacaoInput.classList.remove('show');
-                } else {
-                    classificacaoInput.classList.add('show');
-                }
-            }
-
-            naoEncontradoCheckbox.addEventListener('change', toggleInputs);
-            toggleInputs();
-        });
-    </script>
-@endpush
