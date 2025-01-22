@@ -12,16 +12,25 @@
             <!-- Cartão de Última Contagem -->
             <div class="col-md-4 mb-3">
                 <div class="card border-0 shadow-sm bg-light-red text-center p-4 h-100" style="border-radius: 8px;">
-                    <h5 class="card-title text-muted mb-2">Última contagem há</h5>
-                    <h1 class="display-4 text-danger">138 dias</h1>
-                    <p class="text-danger">faltam 42 dias para data limite</p>
+                    @if ($ultimaContagem->status == ContagemStatus::FINALIZADO->value)
+                        <h5 class="card-title text-muted mb-2">Última contagem há</h5>
+                        <p class="display-5">
+                            {{ intval($diasDesdeUltimaContagem) }} dia(s)
+                        </p>
+                    @else
+                        <div class="align-middle">
+                            <i class="bi bi-hourglass-split fs-2"></i>
+                            <p class="card-title text-muted mb-2">Há uma contagem em andamento</p>
+                            <h4 class="align-middle">Acompanhar contagem</h4>
+                        </div>
+                    @endif
                 </div>
             </div>
 
             <!-- Cartão de Nova Contagem -->
             <div class="col-md-4 mb-3">
                 <div class="card border-0 shadow-sm text-center p-4 h-100" style="border-radius: 8px;">
-                    <i class="bi bi-clipboard-check" style="font-size: 2rem;"></i>
+                    <i class="bi bi-clipboard-check fs-2"></i>
                     <h5 class="card-title mt-2">Nova Contagem</h5>
                     <a href="{{ route('contagens.create') }}" class="stretched-link"></a>
                 </div>
@@ -30,7 +39,7 @@
             <!-- Cartão de Importar Patrimônio -->
             <div class="col-md-4 mb-3">
                 <div class="card border-0 shadow-sm text-center p-4 h-100" style="border-radius: 8px;">
-                    <i class="bi bi-upload" style="font-size: 2rem;"></i>
+                    <i class="bi bi-upload fs-2"></i>
                     <h5 class="card-title mt-2">Importar Patrimônio</h5>
                     <p class="text-muted">última importação realizada há 155 dias</p>
                     <a href="{{ route('patrimonio.index') }}" class="stretched-link"></a>
