@@ -44,6 +44,6 @@ Route::prefix('comissao')->name('comissao.')
             Route::get('departamentos/{departamento}/patrimonios', [PatrimonioContadoController::class, 'index'])->name('patrimonios.index');
             Route::get('departamentos/{departamento}/patrimonios/{patrimonio}', [PatrimonioContadoController::class, 'show'])->name('patrimonios.show');
             Route::put('departamentos/{departamento}/patrimonios/{patrimonio}', [PatrimonioContadoController::class, 'update'])->name('patrimonios.update');
-            Route::post('departamentos/{departamento}/patrimonios/{patrimonio}', [PatrimonioContadoController::class, 'store'])->name('patrimonios.store');
+            Route::post('departamentos/{departamento}/patrimonios/{patrimonio?}', [PatrimonioContadoController::class, 'store'])->name('patrimonios.store');
         });
     });

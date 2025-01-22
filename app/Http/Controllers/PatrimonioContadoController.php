@@ -28,16 +28,24 @@ class PatrimonioContadoController extends Controller
         return view('comissao.contagem.patrimonios.create', compact('departamento'));
     }
 
-    public function store(Request $request, Contagem $contagem, Departamento $departamento, Patrimonio $patrimonio)
+    public function store(Request $request, Contagem $contagem, Departamento $departamento, string $patrimonio = '')
     {
+        if (empty($patrimonio)) {
+            $request->validate([
+                'codigo' => 'required|exists:patrimonios,codigo',
+            ]);
+            $patrimonio = Patrimonio::where('codigo', $request->codigo)->first();
+        } else {
+            $patrimonio = Patrimonio::find($patrimonio);
+        }
+
         $request->validate([
             'nao_encontrado' => 'nullable|boolean',
             'classificacao_proposta_id' => 'nullable|exists:classificacoes,id',
         ]);
 
         if ($contagem->patrimoniosContados()->whereBelongsTo($patrimonio)->exists()) {
-            return redirect()->route('comissao.contagem.patrimonios.index', [$contagem, $departamento])
-                ->with('error', 'Patrimônio já foi lido!');
+            return back()->withErrors(['codigo' => 'Patrimônio já foi lido!'])->withInput();
         }
 
         $patrimonio = PatrimonioContado::create([
