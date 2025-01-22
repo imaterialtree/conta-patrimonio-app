@@ -20,6 +20,9 @@ class ContagemController extends Controller
 
     public function create()
     {
+        if (Contagem::where('status', ContagemStatus::EM_ANDAMENTO)->exists()) {
+            return back()->withErrors(['contagem' => 'Já existe uma contagem em andamento!']);
+        }
         $membros = Usuario::all();
 
         return view('contagem.create', compact('membros'));
@@ -27,13 +30,17 @@ class ContagemController extends Controller
 
     public function store(Request $request)
     {
+        if (Contagem::where('status', ContagemStatus::EM_ANDAMENTO)->exists()) {
+            return back()->withErrors(['contagem' => 'Já existe uma contagem em andamento!']);
+        }
+        
         $request->validate([
             'membros' => 'required',
             'membros.*' => 'exists:usuarios,id',
         ]);
 
         $contagem = $request->user()->contagensCriadas()->create([
-            'status' => 'Em andamento',
+            'status' => ContagemStatus::EM_ANDAMENTO,
         ]);
         $contagem->usuariosComissao()->attach($request->membros);
 
