@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComissaoContagemController;
 use App\Http\Controllers\ContagemController;
 use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PatrimonioContadoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,7 @@ Route::post('/login', [AuthController::class, 'store']);
 Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::view('home', 'home')->name('home');
+    Route::get('home', HomeController::class)->name('home');
     Route::view('relatorios', 'relatorio.index')->name('relatorio.index');
     Route::view('patrimonios', 'patrimonio.index')->name('patrimonio.index');
     Route::resource('usuarios', UsuarioController::class);
