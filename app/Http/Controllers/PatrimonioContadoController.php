@@ -17,7 +17,17 @@ class PatrimonioContadoController extends Controller
      */
     public function index(Contagem $contagem, Departamento $departamento)
     {
-        return view('comissao.contagem.patrimonios.index', compact('contagem', 'departamento'));
+        $patrimoniosContados = $contagem->patrimoniosContados()->where('departamento_id', $departamento->id)->get();
+        $patrimoniosForaDeLugar = $patrimoniosContados?->whereNotIn('patrimonio_id', $departamento->patrimonios->pluck('id'));
+
+        $patrimonios = $departamento->patrimonios->map(function ($patrimonio) use ($patrimoniosContados) {
+            return [
+                'patrimonio' => $patrimonio,
+                'patrimonioContado' => $patrimoniosContados?->firstWhere('patrimonio_id', $patrimonio->id),
+            ];
+        });
+
+        return view('comissao.contagem.patrimonios.index', compact('contagem', 'departamento', 'patrimonios'));
     }
 
     public function show(Contagem $contagem, Departamento $departamento, Patrimonio $patrimonio)
@@ -27,8 +37,6 @@ class PatrimonioContadoController extends Controller
             ? ClassificacaoEnum::fromId($patrimonioContado->classificacao_proposta_id)
             : null;
         
-        // return $patrimonioContado;
-        // return  compact('contagem', 'departamento', 'patrimonio', 'oldClassificacaoProposta');
         return view('comissao.contagem.patrimonios.show', compact('contagem', 'departamento', 'patrimonio', 'oldClassificacaoProposta'));
     }
 
