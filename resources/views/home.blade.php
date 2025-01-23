@@ -22,6 +22,7 @@
                             <i class="bi bi-hourglass-split fs-2"></i>
                             <p class="card-title text-muted mb-2">Há uma contagem em andamento</p>
                             <h4 class="align-middle">Acompanhar contagem</h4>
+                            <a href="{{ route('contagens.show', $ultimaContagem) }}" class="stretched-link"></a>
                         </div>
                     @endif
                 </div>
