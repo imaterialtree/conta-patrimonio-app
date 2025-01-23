@@ -23,8 +23,7 @@ Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('home', HomeController::class)->name('home');
-    Route::view('relatorios', 'relatorio.index')->name('relatorio.index');
-    Route::view('patrimonios', 'patrimonio.index')->name('patrimonio.index');
+    Route::resource('patrimonios', PatrimonioController::class);
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('contagens', ContagemController::class)
         ->parameters(['contagens' => 'contagem']);
