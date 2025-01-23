@@ -12,24 +12,30 @@
 
         <div class="row">
 
-            <div class="col-md-4">
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item w-50">Data de Início</li>
-                    <li class="list-group-item w-50">{{ $contagem['criado_em'] }}</li>
-                </ul>
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item w-50">Data de Fim</li>
-                    <li class="list-group-item w-50">{{ $contagem['finalizado_em'] }}</li>
-                </ul>
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item w-50">Criado por</li>
-                    <li class="list-group-item w-50">{{ $contagem->usuarioCriador->nome }}</li>
-                </ul>
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item w-50">Status</li>
-                    <li class="list-group-item w-50"><span class="badge text-bg-secondary">{{ $contagem['status'] }}</span>
-                    </li>
-                </ul>
+            <div class="col-md-6">
+                <div class="card shadow-sm border-0 p-3">
+                    <h5 class="card-title">Detalhes da Contagem</h5>
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th>Data de Início</th>
+                                <td>{{ $contagem['criado_em'] }}</td>
+                            </tr>
+                            <tr>
+                                <th>Data de Fim</th>
+                                <td>{{ $contagem['finalizado_em'] }}</td>
+                            </tr>
+                            <tr>
+                                <th>Criado por</th>
+                                <td>{{ $contagem->usuarioCriador->nome }}</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td><span class="badge text-bg-secondary">{{ $contagem['status'] }}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="col-md-6">
@@ -79,6 +85,7 @@
             @endif
 
         </div>
+        
         <div class="row">
             <h2>Progresso por Departamentos</h2>
         </div>
