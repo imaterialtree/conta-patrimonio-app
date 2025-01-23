@@ -24,6 +24,7 @@ return new class extends Migration
         Schema::create('patrimonios_contados', function (Blueprint $table) {
             $table->id();
             $table->foreignId('contagem_id')->constrained('contagens');
+            $table->foreignId('departamento_id')->constrained('departamentos');
             $table->foreignId('patrimonio_id')->constrained('patrimonios');
             $table->foreignId('usuario_id')->constrained('usuarios');
             $table->foreignId('classificacao_proposta_id')->nullable()->constrained('classificacoes');

@@ -17,6 +17,7 @@ class PatrimonioContado extends Model
 
     protected $fillable = [
         'contagem_id',
+        'departamento_id',
         'patrimonio_id',
         'usuario_id',
         'classificacao_proposta_id',
