@@ -8,11 +8,11 @@
     </div>
     <!-- Cartão de Novo Departamento -->
     <div class="col-md-4 mb-3">
-        <div class="card border-0 shadow-sm text-center p-4 h-100" style="border-radius: 8px;">
+        <x-card-btn>
             <i class="bi bi-building" style="font-size: 2rem;"></i>
             <h5 class="card-title mt-2">Novo Departamento</h5>
             <a href="{{ route('departamentos.create') }}" class="stretched-link"></a>
-        </div>
+        </x-card-btn>
     </div>
 
     <div class="card">
