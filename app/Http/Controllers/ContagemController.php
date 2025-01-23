@@ -89,4 +89,11 @@ class ContagemController extends Controller
 
         return back();
     }
+
+    public function sugestoes(Contagem $contagem)
+    {
+        $patrimoniosContados = $contagem->patrimoniosContados()->whereNotNull('classificacao_proposta_id')->get();
+
+        return view('relatorio.sugestoes', compact('contagem', 'patrimoniosContados'));
+    }
 }

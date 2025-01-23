@@ -61,6 +61,14 @@
             </div>
         </div>
 
+        <div class="col-md-4 mb-3">
+            <x-card-btn>
+                <i class="bi bi-clipboard-check fs-2"></i>
+                <h5 class="card-title mt-2">Ver Sugestões de Mudança de Classificação</h5>
+                <a href="{{ route('contagem.sugestoes', $contagem) }}" class="stretched-link"></a>
+            </x-card-btn>
+        </div>
+
         <div class="row">
             <h1 class="mb-3">Progresso da Contagem</h1>
             @if ($contagem->status == \App\Enums\ContagemStatus::CANCELADO->value)
@@ -83,7 +91,6 @@
                 </button>
                 @include('contagem.partials.cancel-form')
             @endif
-
         </div>
         
         <div class="row">

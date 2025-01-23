@@ -30,6 +30,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         ->parameters(['contagens' => 'contagem']);
     Route::put('contagens/{contagem}/finalizar', [ContagemController::class, 'finalizar'])->name('contagens.finalizar');
     Route::put('contagens/{contagem}/cancelar', [ContagemController::class, 'cancelar'])->name('contagens.cancelar');
+    Route::get('/contagem/{contagem}/sugestoes', [ContagemController::class, 'sugestoes'])->name('contagem.sugestoes');
     Route::resource('departamentos', DepartamentoController::class);
 });
 
