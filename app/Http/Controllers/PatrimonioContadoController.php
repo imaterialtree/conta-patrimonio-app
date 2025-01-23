@@ -19,15 +19,16 @@ class PatrimonioContadoController extends Controller
     {
         $patrimoniosContados = $contagem->patrimoniosContados()->where('departamento_id', $departamento->id)->get();
         $patrimoniosForaDeLugar = $patrimoniosContados?->whereNotIn('patrimonio_id', $departamento->patrimonios->pluck('id'));
+        $patrimoniosForaDeLugar = Patrimonio::whereIn('id', $patrimoniosForaDeLugar->pluck('patrimonio_id'))->get();
 
         $patrimonios = $departamento->patrimonios->map(function ($patrimonio) use ($patrimoniosContados) {
             return [
                 'patrimonio' => $patrimonio,
-                'patrimonioContado' => $patrimoniosContados?->firstWhere('patrimonio_id', $patrimonio->id),
+                'contado' => $patrimoniosContados?->firstWhere('patrimonio_id', $patrimonio->id),
             ];
         });
 
-        return view('comissao.contagem.patrimonios.index', compact('contagem', 'departamento', 'patrimonios'));
+        return view('comissao.contagem.patrimonios.index', compact('contagem', 'departamento', 'patrimonios', 'patrimoniosForaDeLugar'));
     }
 
     public function show(Contagem $contagem, Departamento $departamento, Patrimonio $patrimonio)
@@ -50,6 +51,8 @@ class PatrimonioContadoController extends Controller
         if (empty($patrimonio)) {
             $request->validate([
                 'codigo' => 'required|exists:patrimonios,codigo',
+            ], [
+                'codigo.exists' => 'Patrimônio não encontrado!',
             ]);
             $patrimonio = Patrimonio::where('codigo', $request->codigo)->first();
         } else {

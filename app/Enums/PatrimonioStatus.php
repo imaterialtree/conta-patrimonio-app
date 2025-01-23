@@ -21,8 +21,8 @@ enum PatrimonioStatus
     {
         return match ($this) {
             self::LIDO => 'bg-success bg-opacity-25',
-            self::NAO_ENCONTRADO => 'bg-warning bg-opacity-25',
-            self::NAO_LIDO => 'bg-danger bg-opacity-25',
+            self::NAO_ENCONTRADO => 'bg-danger bg-opacity-25',
+            self::NAO_LIDO => 'bg-opacity-25',
         };
     }
 }
