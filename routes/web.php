@@ -6,6 +6,8 @@ use App\Http\Controllers\ContagemController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PatrimonioContadoController;
+use App\Http\Controllers\PatrimonioController;
+use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('contagens/{contagem}/cancelar', [ContagemController::class, 'cancelar'])->name('contagens.cancelar');
     Route::get('/contagem/{contagem}/sugestoes', [ContagemController::class, 'sugestoes'])->name('contagem.sugestoes');
     Route::resource('departamentos', DepartamentoController::class);
+    // relatorios
+    Route::get('relatorios', [RelatorioController::class, 'index'])->name('relatorios.index');
+    Route::get('relatorios/contagem', [RelatorioController::class, 'contagem'])->name('relatorios.contagem');
 });
 
 Route::prefix('comissao')->name('comissao.')

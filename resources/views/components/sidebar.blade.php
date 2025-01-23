@@ -1,5 +1,4 @@
-<!-- resources/views/components/sidebar.blade.php -->
-<div class="bg-white p-3 vh-100 shadow-sm sticky-top" style="width: 250px;">
+<div class="bg-white p-3 vh-100 shadow-sm sticky-top">
     <h4 class="mb-4">Opções</h4>
     <ul class="nav flex-column">
         <li class="nav-item mb-2">
@@ -13,7 +12,7 @@
             </a>
         </li>
         <li class="nav-item mb-2">
-            <a href="{{ route('relatorio.index') }}" class="nav-link text-dark">
+            <a href="{{ route('relatorios.index') }}" class="nav-link text-dark">
                 <i class="bi bi-file-earmark-text me-2"></i> Gerar Relatório
             </a>
         </li>
