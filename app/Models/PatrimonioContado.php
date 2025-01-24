@@ -36,6 +36,11 @@ class PatrimonioContado extends Model
         return $this->belongsTo(Contagem::class);
     }
 
+    public function departamento(): BelongsTo
+    {
+        return $this->belongsTo(Departamento::class);
+    }
+
     public function patrimonio(): BelongsTo
     {
         return $this->belongsTo(Patrimonio::class);

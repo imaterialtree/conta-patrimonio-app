@@ -34,4 +34,9 @@ class Patrimonio extends Model
     {
         return $this->belongsTo(Departamento::class);
     }
+
+    public function patrimoniosContados()
+    {
+        return $this->hasMany(PatrimonioContado::class);
+    }
 }
