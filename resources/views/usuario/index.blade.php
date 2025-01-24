@@ -1,11 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="h4">Gerenciar Usuários</h2>
-        <a href="{{ route('usuarios.create') }}" class="btn btn-primary d-flex align-items-center">
-            <i class="bi bi-person-plus-fill me-2"></i> Novo Usuário
-        </a>
+    <div class="row mb-3">
+        <h2>Usuários</h2>
     </div>
 
     <div class="mb-4 row">

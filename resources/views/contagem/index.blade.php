@@ -5,7 +5,7 @@
 @section('content')
     <div class="mb-3">
         <div class="row">
-            <h1>Contagem</h1>
+            <h2>Contagem</h2>
         </div>
     </div>
     <!-- Cartão de Nova Contagem -->

@@ -3,7 +3,7 @@
 @section('content')
     <div class="mb-3">
         <div class="row">
-            <h1>Departamentos</h1>
+            <h2>Departamentos</h2>
         </div>
     </div>
     <!-- Cartão de Novo Departamento -->
