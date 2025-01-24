@@ -92,7 +92,7 @@
                 @include('contagem.partials.cancel-form')
             @endif
         </div>
-        
+
         <div class="row">
             <h2>Progresso por Departamentos</h2>
         </div>

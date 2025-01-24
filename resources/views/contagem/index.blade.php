@@ -19,8 +19,7 @@
             </x-card-btn>
         </div>
 
-        <span class="badge badge-primary">Primary</span>
-        <div class="col-md-10">
+        <div class="me-3">
             <div class="card shadow-sm border-0 p-3 h-100">
                 <h5 class="card-title">Contagens</h5>
                 <table class="table table-striped">
