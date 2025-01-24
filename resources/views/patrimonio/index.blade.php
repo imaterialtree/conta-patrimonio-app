@@ -24,7 +24,7 @@
                         <tr>
                             <th>Código</th>
                             <th>Descrição</th>
-                            <th style="width: 1%;">Ações</th>
+                            <th class="text-center" style="width: 1%;">Ações</th>
                         </tr>
                     </thead>
                     <tbody>

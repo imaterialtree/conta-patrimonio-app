@@ -38,7 +38,7 @@
                         </th>
                         <th class="align-middle">Siape</th>
                         <th class="align-middle">Tipo</th>
-                        <th class="text-center align-middle">Ações</th>
+                        <th class="text-center align-middle" style="width: 1%;">Ações</th>
                     </tr>
                 </thead>
                 <tbody>

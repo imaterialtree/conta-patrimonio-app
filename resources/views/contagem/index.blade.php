@@ -27,7 +27,7 @@
                         <th>Data de Fim</th>
                         <th>Criado por</th>
                         <th>Status</th>
-                        <th>Acões</th>
+                        <th class="text-center" style="width: 1%;">Acões</th>
                     </tr>
                 </thead>
                 <tbody>
