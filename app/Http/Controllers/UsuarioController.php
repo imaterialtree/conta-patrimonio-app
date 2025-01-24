@@ -57,6 +57,7 @@ class UsuarioController extends Controller
     public function destroy(Usuario $usuario)
     {
         $usuario->delete();
+        return redirect()->route('usuarios.index')->with('success', 'Usuário deletado com sucesso');
     }
 
     public function perfil()
