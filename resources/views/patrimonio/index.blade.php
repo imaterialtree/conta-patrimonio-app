@@ -16,40 +16,38 @@
     </div>
 
     @foreach ($departamentos as $departamento)
-        <div class="me-3">
-            <div class="card shadow-sm border-0 p-3 h-100">
-                <h5 class="card-title"><strong>Departamento:</strong> {{ $departamento->titulo }}</h5>
-                <table class="table table-striped">
-                    <thead>
+        <div class="card p-3 h-100 mb-3">
+            <h5 class="card-title mb-3"><strong>Departamento:</strong> {{ $departamento->titulo }}</h5>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Descrição</th>
+                        <th class="text-center" style="width: 1%;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($departamento->patrimonios as $patrimonio)
                         <tr>
-                            <th>Código</th>
-                            <th>Descrição</th>
-                            <th class="text-center" style="width: 1%;">Ações</th>
+                            <td>{{ $patrimonio->codigo }}</td>
+                            <td>{{ $patrimonio->descricao }}</td>
+                            <td class="d-flex justify-content-around">
+                                <a href="{{ route('patrimonios.edit', $patrimonio) }}" class="btn text-primary"
+                                    title="Editar patrimônio">
+                                    <i class="fa fa-edit"></i>
+                                    Editar
+                                </a>
+                                <button class="btn text-danger" type="button" data-bs-toggle="modal"
+                                    title="Excluir Patrimônio" data-bs-target="#deletePatrimonioModal"
+                                    data-action="{{ route('patrimonios.destroy', $patrimonio) }}">
+                                    <i class="fa fa-trash"></i>
+                                    Excluir
+                                </button>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($departamento->patrimonios as $patrimonio)
-                            <tr>
-                                <td>{{ $patrimonio->codigo }}</td>
-                                <td>{{ $patrimonio->descricao }}</td>
-                                <td class="d-flex justify-content-around">
-                                    <a href="{{ route('patrimonios.edit', $patrimonio) }}" class="btn text-primary"
-                                        title="Editar patrimônio">
-                                        <i class="fa fa-edit"></i>
-                                        Editar
-                                    </a>
-                                    <button class="btn text-danger" type="button" data-bs-toggle="modal"
-                                        title="Excluir Patrimônio" data-bs-target="#deletePatrimonioModal"
-                                        data-action="{{ route('patrimonios.destroy', $patrimonio) }}">
-                                        <i class="fa fa-trash"></i>
-                                        Excluir
-                                    </button>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     @endforeach
     <x-delete-modal id="deletePatrimonioModal" />

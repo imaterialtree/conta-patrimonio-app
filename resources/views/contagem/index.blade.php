@@ -18,7 +18,7 @@
     </div>
 
     <div class="me-3">
-        <div class="card shadow-sm border-0 p-3 h-100">
+        <div class="card p-3 h-100">
             <h5 class="card-title">Contagens</h5>
             <table class="table table-striped">
                 <thead>
@@ -39,7 +39,10 @@
                             <td>
                                 <span class="badge text-bg-secondary">{{ $contagem['status'] }}</span>
                             </td>
-                            <td><a class="btn btn-primary" href="{{ route('contagens.show', $contagem) }}">Ver</a>
+                            <td><a class="btn text-primary" href="{{ route('contagens.show', $contagem) }}">
+                                    <i class="fas fa-eye"></i>
+                                    Ver
+                                </a>
                             </td>
                         </tr>
                     @endforeach
