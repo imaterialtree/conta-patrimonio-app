@@ -30,11 +30,17 @@
                                 title="Editar departamento">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            @include('departamento.partials.delete-form')
+                            <button class="btn text-danger" type="button" data-bs-toggle="modal"
+                                title="Excluir Departamento" data-bs-target="#deleteDepartamentoModal"
+                                data-action="{{ route('departamentos.destroy', $departamento) }}">
+                                <i class="fa fa-trash"></i>
+                                Excluir
+                            </button>
                         </div>
                     </li>
                 @endforeach
             </ul>
         </div>
     </div>
+    <x-delete-modal id="deleteDepartamentoModal" />
 @endsection

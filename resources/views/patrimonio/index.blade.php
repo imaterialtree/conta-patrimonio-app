@@ -38,7 +38,12 @@
                                         <i class="fa fa-edit"></i>
                                         Editar
                                     </a>
-                                    {{-- @include('patrimonio.partials.delete-form') --}}
+                                    <button class="btn text-danger" type="button" data-bs-toggle="modal"
+                                        title="Excluir Patrimônio" data-bs-target="#deletePatrimonioModal"
+                                        data-action="{{ route('patrimonios.destroy', $patrimonio) }}">
+                                        <i class="fa fa-trash"></i>
+                                        Excluir
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -47,4 +52,5 @@
             </div>
         </div>
     @endforeach
+    <x-delete-modal id="deletePatrimonioModal" />
 @endsection
