@@ -17,7 +17,7 @@
             </a>
         </li>
         <li class="nav-item mb-2">
-            <a href="{{ route('patrimonio.index') }}" class="nav-link text-dark">
+            <a href="{{ route('patrimonios.index') }}" class="nav-link text-dark">
                 <i class="bi bi-box-seam me-2"></i> Gerenciar Patrimônio
             </a>
         </li>

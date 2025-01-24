@@ -45,7 +45,7 @@
                     <i class="bi bi-upload fs-2"></i>
                     <h5 class="card-title mt-2">Importar Patrimônio</h5>
                     <p class="text-muted">última importação realizada há 155 dias</p>
-                    <a href="{{ route('patrimonio.index') }}" class="stretched-link"></a>
+                    <a href="{{ route('patrimonios.index') }}" class="stretched-link"></a>
                 </x-card-btn>
             </div>
         </div>

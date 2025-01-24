@@ -35,7 +35,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('departamentos', DepartamentoController::class);
     // relatorios
     Route::get('relatorios', [RelatorioController::class, 'index'])->name('relatorios.index');
-    Route::get('relatorios/contagem', [RelatorioController::class, 'contagem'])->name('relatorios.contagem');
+    Route::get('relatorios/contagem', [RelatorioController::class, 'selectContagem'])->name('relatorios.contagem');
+    Route::get('relatorios/contagem/{contagem}', [RelatorioController::class, 'contagem'])->name('relatorios.contagem.pdf');
+    Route::get('relatorios/historico-movimentacao', [RelatorioController::class, 'historicoMovimentacao'])->name('relatorios.historico_movimentacao');
 });
 
 Route::prefix('comissao')->name('comissao.')
