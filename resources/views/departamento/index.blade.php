@@ -18,28 +18,36 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Departamentos</h5>
-            <ul class="list-group list-group-flush">
-                @foreach ($departamentos as $departamento)
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <strong>{{ $departamento->titulo }}</strong><br>
-                            <span class="text-muted">{{ $departamento->codigo }}</span>
-                        </div>
-                        <div>
-                            <a href="{{ route('departamentos.edit', $departamento) }}" class="btn text-primary"
-                                title="Editar departamento">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <button class="btn text-danger" type="button" data-bs-toggle="modal"
-                                title="Excluir Departamento" data-bs-target="#deleteDepartamentoModal"
-                                data-action="{{ route('departamentos.destroy', $departamento) }}">
-                                <i class="fa fa-trash"></i>
-                                Excluir
-                            </button>
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Código</th>
+                        <th class="text-center" style="width: 1%;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($departamentos as $departamento)
+                        <tr>
+                            <td>{{ $departamento->titulo }}</td>
+                            <td>{{ $departamento->codigo }}</td>
+                            <td class="d-flex justify-content-around">
+                                <a href="{{ route('departamentos.edit', $departamento) }}" class="btn text-primary"
+                                    title="Editar departamento">
+                                    <i class="fa fa-edit"></i>
+                                    Editar
+                                </a>
+                                <button class="btn text-danger" type="button" data-bs-toggle="modal"
+                                    title="Excluir Departamento" data-bs-target="#deleteDepartamentoModal"
+                                    data-action="{{ route('departamentos.destroy', $departamento) }}">
+                                    <i class="fa fa-trash"></i>
+                                    Excluir
+                                </button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
     <x-delete-modal id="deleteDepartamentoModal" />
