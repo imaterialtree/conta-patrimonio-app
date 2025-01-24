@@ -9,7 +9,7 @@
     <!-- Cartão de Novo Patrimônio -->
     <div class="col-md-4 mb-3">
         <x-card-btn>
-            <i class="bi bi-building" style="font-size: 2rem;"></i>
+            <i class="bi bi-box-seam fs-2"></i>
             <h5 class="card-title mt-2">Novo Patrimônio</h5>
             <a href="{{ route('patrimonios.create') }}" class="stretched-link"></a>
         </x-card-btn>
@@ -24,7 +24,7 @@
                         <tr>
                             <th>Código</th>
                             <th>Descrição</th>
-                            <th class="col-2 text-center">Ações</th>
+                            <th style="width: 1%;">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
