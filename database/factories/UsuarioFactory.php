@@ -30,6 +30,7 @@ class UsuarioFactory extends Factory
             'senha' => static::$password ??= Hash::make('senha123'),
             'remember_token' => Str::random(10),
             'tipo' => fake()->randomElement(['admin', 'comissao']),
+            'siape' => fake()->unique()->regexify('\d{9}'),
         ];
     }
 

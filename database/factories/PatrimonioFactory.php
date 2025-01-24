@@ -20,7 +20,7 @@ class PatrimonioFactory extends Factory
     {
         return [
             'codigo' => fake()->regexify('FOR\d{5,10}'),
-            'descricao' => fake()->sentence(3),
+            'descricao' => fake()->words(3, true),
             'departamento_id' => Departamento::factory(),
             'classificacao_id' => Classificacao::inRandomOrder()->value('id'),
         ];
