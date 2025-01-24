@@ -15,26 +15,36 @@
         </x-card-btn>
     </div>
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Patrimônios</h5>
-            <ul class="list-group list-group-flush">
-                @foreach ($patrimonios as $patrimonio)
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <strong>{{ $patrimonio->codigo }}</strong><br>
-                            <span class="text-muted">{{ $patrimonio->descricao }}</span>
-                        </div>
-                        <div>
-                            <a href="{{ route('patrimonios.edit', $patrimonio) }}" class="btn text-primary"
-                                title="Editar patrimônio">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            @include('patrimonio.partials.delete-form')
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
+    @foreach ($departamentos as $departamento)
+        <div class="me-3">
+            <div class="card shadow-sm border-0 p-3 h-100">
+                <h5 class="card-title"><strong>Departamento:</strong> {{ $departamento->titulo }}</h5>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Descrição</th>
+                            <th class="col-2 text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($departamento->patrimonios as $patrimonio)
+                            <tr>
+                                <td>{{ $patrimonio->codigo }}</td>
+                                <td>{{ $patrimonio->descricao }}</td>
+                                <td class="d-flex justify-content-around">
+                                    <a href="{{ route('patrimonios.edit', $patrimonio) }}" class="btn text-primary"
+                                        title="Editar patrimônio">
+                                        <i class="fa fa-edit"></i>
+                                        Editar
+                                    </a>
+                                    {{-- @include('patrimonio.partials.delete-form') --}}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+    @endforeach
 @endsection

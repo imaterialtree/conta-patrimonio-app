@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classificacao;
+use App\Models\Departamento;
 use App\Models\Patrimonio;
 use Illuminate\Http\Request;
 
@@ -13,8 +15,9 @@ class PatrimonioController extends Controller
     public function index()
     {
         $patrimonios = Patrimonio::all();
+        $departamentos = Departamento::all();
 
-        return view('patrimonio.index', compact('patrimonios'));
+        return view('patrimonio.index', compact('patrimonios', 'departamentos'));
     }
 
     /**
@@ -22,7 +25,10 @@ class PatrimonioController extends Controller
      */
     public function create()
     {
-        return view('patrimonio.create');
+        $departamentos = Departamento::all();
+        $classificacoes = Classificacao::all();
+
+        return view('patrimonio.create', compact('departamentos', 'classificacoes'));
     }
 
     /**
@@ -56,7 +62,10 @@ class PatrimonioController extends Controller
      */
     public function edit(Patrimonio $patrimonio)
     {
-        return view('patrimonio.edit', compact('patrimonio'));
+        $departamentos = Departamento::all();
+        $classificacoes = Classificacao::all();
+
+        return view('patrimonio.edit', compact('patrimonio', 'departamentos', 'classificacoes'));
     }
 
     /**
