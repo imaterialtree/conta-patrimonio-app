@@ -19,10 +19,8 @@
             <x-header />
 
             @if (session()->has('success'))
-                <x-toast>
-                    <div class="text-bg-success">
-                        {{ session('success') }}
-                    </div>
+                <x-toast type="success">
+                    {{ session('success') }}
                 </x-toast>
             @endif
 
