@@ -7,7 +7,7 @@
         <h2>Relatórios</h2>
     </div>
 
-    <div class="row mb-3 col-6">
+    <div class="mb-3 col-5">
         <x-card-btn>
             <i class="bi bi-clipboard-data fs-2"></i>
             <h4>Relatório de contagem</h4>
@@ -15,7 +15,7 @@
         </x-card-btn>
     </div>
 
-    <div class="row mb-3 col-6">
+    <div class="mb-3 col-5">
         <x-card-btn>
             <i class="bi bi-clock-history fs-2"></i>
             <h4>Histórico de Movimentação de Patrimônio</h4>
