@@ -17,7 +17,7 @@
             </x-card-btn>
         </div>
         <div class="col-md-4">
-            <div class="card shadow-sm text-center" style="border-radius: 8px;">
+            <div class="card border-0 text-center">
                 <div class="card-body text-center">
                     <h5 class="card-title">Usuários cadastrados</h5>
                     <p class="display-4">{{ $userCount }}</p>
