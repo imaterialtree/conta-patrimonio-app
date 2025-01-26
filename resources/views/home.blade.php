@@ -28,13 +28,15 @@
         @endif
 
         <!-- Cartão de Nova Contagem -->
-        <div class="col-md-4 mb-3">
-            <x-card-btn>
-                <i class="bi bi-clipboard-check fs-2"></i>
-                <h5 class="card-title mt-2">Nova Contagem</h5>
-                <a href="{{ route('contagens.create') }}" class="stretched-link"></a>
-            </x-card-btn>
-        </div>
+        @if (!$ultimaContagem || $ultimaContagem->status != ContagemStatus::EM_ANDAMENTO->value)
+            <div class="col-md-4 mb-3">
+                <x-card-btn>
+                    <i class="bi bi-clipboard-check fs-2"></i>
+                    <h5 class="card-title mt-2">Nova Contagem</h5>
+                    <a href="{{ route('contagens.create') }}" class="stretched-link"></a>
+                </x-card-btn>
+            </div>
+        @endif
 
         <!-- Cartão de Importar Patrimônio -->
         <div class="col-md-4 mb-3">
