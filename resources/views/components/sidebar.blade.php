@@ -9,7 +9,7 @@
         <li class="nav-item mb-2">
             <a href="{{ route('contagens.index') }}"
                 class="nav-link {{ request()->routeIs('contagens.index') ? 'active' : 'text-dark' }}">
-                <i class="bi bi-list-check me-2"></i> Contagem
+                <i class="bi bi-ui-checks me-2"></i> Contagem
             </a>
         </li>
         <li class="nav-item mb-2">
@@ -33,7 +33,7 @@
         <li class="nav-item mb-2">
             <a href="{{ route('departamentos.index') }}"
                 class="nav-link {{ request()->routeIs('departamentos.index') ? 'active' : 'text-dark' }}">
-                <i class="bi bi-building me-2"></i> Departamentos
+                <i class="bi bi-building-fill me-2"></i> Departamentos
             </a>
         </li>
     </ul>

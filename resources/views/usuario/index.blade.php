@@ -8,7 +8,7 @@
     <div class="mb-4 row">
         <div class="col-md-4">
             <x-card-btn>
-                <i class="bi bi-person-plus-fill fs-2"></i>
+                <i class="bi bi-person-fill-add fs-2"></i>
                 <h5 class="card-title mt-2">Novo Usuário</h5>
                 <a href="{{ route('usuarios.create') }}" class="stretched-link"></a>
             </x-card-btn>
