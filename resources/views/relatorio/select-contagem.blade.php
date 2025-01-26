@@ -26,8 +26,8 @@
                         <td>{{ $contagem->usuarioCriador->nome }}</td>
                         <td>{{ $contagem->status }}</td>
                         <td>
-                            <a href="{{ route('relatorios.contagem.pdf', $contagem) }}" class="btn btn-primary">
-                                Gerar Relatório
+                            <a href="{{ route('relatorios.contagem.pdf', $contagem) }}" class="btn btn-outline-primary" target="_blank">
+                                <i class="bi bi-clipboard-data"></i> Gerar Relatório
                             </a>
                         </td>
                     </tr>
