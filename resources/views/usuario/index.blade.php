@@ -43,7 +43,7 @@
                         <tr>
                             <td class="col-auto align-middle">
                                 <strong>{{ $usuario->nome }}</strong> <br>
-                                {{ $usuario->email }}
+                                <span class="text-muted">{{ $usuario->email }}</span>
                             </td>
                             <td class="align-middle">{{ $usuario->siape }}</td>
                             <td class="align-middle"><span class="badge bg-secondary text-white">{{ $usuario->tipo }}</span>
