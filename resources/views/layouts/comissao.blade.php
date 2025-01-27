@@ -92,9 +92,9 @@
             <i class="bi bi-person"></i>
             <p>Perfil</p>
         </a>
-        <a href="{{ route('comissao.config') }}" class="{{ request()->is('comissao/config') ? 'active' : '' }}">
-            <i class="bi bi-gear"></i>
-            <p>Configurações</p>
+        <a href="{{ route('comissao.patrimonios') }}" class="{{ request()->is('comissao/patrimonios') ? 'active' : '' }}">
+            <i class="bi bi-box-seam"></i>
+            <p>Patrimônios</p>
         </a>
     </nav>
     @stack('scripts')
