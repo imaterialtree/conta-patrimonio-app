@@ -6,7 +6,11 @@
     <div class="row mb-3">
         <h2>Histórico de Movimentação de Patrimônio</h2>
     </div>
-
+    <div class="mb-3">
+        <a href="{{ route('relatorios.historico_movimentacao.pdf', request()->all()) }}" class="btn btn-primary">
+            <i class="bi bi-printer"></i> Imprimir
+        </a>
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -23,7 +27,8 @@
                     <td>
                         <ul>
                             @foreach ($patrimonio->audits as $audit)
-                                <li>{{ $audit->created_at }} - {{ $audit->user->name ?? 'Sistema' }} - {{ $audit->departamento_titulo }}</li>
+                                <li>{{ $audit->created_at }} - {{ $audit->user->name ?? 'Sistema' }} -
+                                    {{ $audit->departamento_titulo }}</li>
                             @endforeach
                         </ul>
                     </td>

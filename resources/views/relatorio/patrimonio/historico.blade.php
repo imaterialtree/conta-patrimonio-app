@@ -3,6 +3,11 @@
 @section('content')
     <div class="container">
         <h2>Histórico de Alterações do Patrimônio</h2>
+        <div class="text-end mb-3">
+            <a href="{{ route('relatorios.historico_movimentacao.pdf', request()->all()) }}" class="btn btn-primary">
+                <i class="bi bi-printer"></i> Imprimir
+            </a>
+        </div>
         <table class="table table-striped">
             <thead>
                 <tr>
