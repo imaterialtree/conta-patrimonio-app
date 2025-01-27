@@ -38,6 +38,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('relatorios/contagem', [RelatorioController::class, 'selectContagem'])->name('relatorios.contagem');
     Route::get('relatorios/contagem/{contagem}', [RelatorioController::class, 'contagem'])->name('relatorios.contagem.pdf');
     Route::get('relatorios/historico-movimentacao', [RelatorioController::class, 'historicoMovimentacao'])->name('relatorios.historico_movimentacao');
+    Route::get('relatorios/patrimonio/{patrimonio}', [RelatorioController::class, 'patrimonioHistorico'])->name('relatorios.patrimonio.historico');
 });
 
 Route::prefix('comissao')->name('comissao.')
