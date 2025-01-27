@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contagem;
+use App\Models\Departamento;
 use App\Models\Patrimonio;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -31,7 +32,17 @@ class RelatorioController extends Controller
         $historico = [];
 
         foreach ($patrimonios as $patrimonio) {
-            $historico[$patrimonio->codigo] = $patrimonio->patrimoniosContados()->with('departamento')->get();
+            $mudanca = $patrimonio->audits()->with('user')->get()->filter(function ($audit) {
+            return array_key_exists('departamento_id', $audit->new_values);
+            })->map(function ($audit) {
+            return [
+                'departamento_novo' => Departamento::find($audit->new_values['departamento_id']),
+                'data_modificacao' => $audit->created_at,
+            ];
+            });
+            if ($mudanca->isNotEmpty()) {
+                $historico[$patrimonio->codigo] = $mudanca;
+            }
         }
 
         $pdf = PDF::loadView('relatorio.historico_movimentacao', compact('historico'));
