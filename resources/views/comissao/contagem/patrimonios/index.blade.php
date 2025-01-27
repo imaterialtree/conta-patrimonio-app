@@ -147,4 +147,4 @@
     </div>
 </div>
 
-@vite('resources/js/rfid.js')
+@vite('resources/js/rfid-contagem.js')
