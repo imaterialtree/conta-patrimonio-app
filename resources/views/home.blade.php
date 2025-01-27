@@ -38,7 +38,7 @@
             </div>
         @endif
 
-        <!-- Cartão de Importar Patrimônio -->
+        {{-- <!-- Cartão de Importar Patrimônio -->
         <div class="col-md-4 mb-3">
             <x-card-btn>
                 <i class="bi bi-upload fs-2"></i>
@@ -46,6 +46,6 @@
                 <p class="text-muted">última importação realizada há 155 dias</p>
                 <a href="{{ route('patrimonios.index') }}" class="stretched-link"></a>
             </x-card-btn>
-        </div>
+        </div> --}}
     </div>
 @endsection

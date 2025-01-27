@@ -4,12 +4,12 @@
     <div class="container mt-4">
         <h2 class="mb-4">Criar Nova Contagem</h2>
 
-        <!-- Botão Importar Patrimônio -->
+        {{-- <!-- Botão Importar Patrimônio -->
         <div class="mb-4">
             <button class="btn btn-secondary">
                 <i class="bi bi-upload"></i> Importar Patrimônio
             </button>
-        </div>
+        </div> --}}
 
         <!-- Seção de Comissão -->
         <h4 class="mb-3">Criar comissão para contagem do inventário</h4>

@@ -7,7 +7,7 @@
             <div class="d-flex flex-column align-items-center mb-4">
                 {{-- <img src="{{ asset(auth()->user()->icone) }}" alt="User Icon" class="rounded-circle" width="100" height="100"> --}}
                 <i class="fas fa-user-circle fa-3x mb-2"></i>
-                <a href="#">Alterar foto de perfil</a>
+                {{-- <a href="#">Alterar foto de perfil</a> --}}
             </div>
             <ul class="list-group list-group-flush mb-3">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
