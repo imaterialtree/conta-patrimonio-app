@@ -28,14 +28,14 @@ class ComissaoContagemController extends Controller
     public function patrimonios(Request $request)
     {
         $search = $request->input('search');
-        $departamentos = Departamento::with(['patrimonios' => function ($query) use ($search) {
-            if ($search) {
-                $query->where('descricao', 'like', "%{$search}%")
-                        ->orWhere('codigo', 'like', "%{$search}%");
-            }
-        }])->get();
+        $patrimonios = Patrimonio::with('departamento')->when($search, function ($query, $search) {
+            $query->where('descricao', 'like', "%{$search}%")
+                  ->orWhere('codigo', 'like', "%{$search}%");
+        })->orderBy('departamento_id')->paginate(10);
 
-        return view('comissao.patrimonios', compact('departamentos'));
+        $departamentos = $patrimonios->groupBy('departamento.titulo');
+
+        return view('comissao.patrimonios.search', compact('patrimonios', 'departamentos'));
     }
 
     public function showPatrimonio(Request $request)
@@ -43,7 +43,7 @@ class ComissaoContagemController extends Controller
         $codigo = $request->input('codigo');
         $patrimonio = Patrimonio::where('codigo', $codigo)->first();
         if (!$patrimonio) {
-            return redirect()->back()->with('error', 'Patrimônio não encontrado.');
+            return redirect()->back()->withErrors('Patrimônio não encontrado');
         }
 
         return view('comissao.patrimonios.show', compact('patrimonio'));
