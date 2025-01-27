@@ -5,6 +5,16 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
+.card-btn.disabled:hover {
+    background-color: initial;
+    cursor: default;
+    box-shadow: none !important;
+}
+
+.card-btn.disabled {
+    color: #6c757d;
+}
+
 .nav-link.active {
     background-color: #e9ecef;
 }

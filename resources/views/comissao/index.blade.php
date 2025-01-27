@@ -9,7 +9,7 @@
 
     <!-- Cartão de Contagem em Andamento -->
     <div class="col-md-4 mb-3 mx-auto">
-        <x-card-btn>
+        <x-card-btn :disabled="!$contagem && !$contagemExiste">
             @if ($contagem)
                 <i class="bi bi-clipboard-check" style="font-size: 2rem;"></i>
                 <h5 class="card-title mt-2">Há uma contagem em andamento</h5>
