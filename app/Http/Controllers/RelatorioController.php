@@ -43,4 +43,12 @@ class RelatorioController extends Controller
         $contagens = Contagem::all();
         return view('relatorio.select-contagem', compact('contagens'));
     }
+
+
+    public function patrimonioHistorico(Patrimonio $patrimonio)
+    {
+        $audits = $patrimonio->audits;
+
+        return view('relatorio.patrimonio.historico', compact('patrimonio', 'audits'));
+    }
 }
