@@ -15,6 +15,16 @@ class PatrimonioSeeder extends Seeder
     public function run(): void
     {
         $deps = Departamento::factory(5)->create();
+        Patrimonio::factory()->create([
+            'codigo' => 'FOR112233',
+            'descricao' => 'Notebook Dell Latitude 7400',
+            'departamento_id' => $deps->first()->id,
+        ]);
+        Patrimonio::factory()->create([
+            'codigo' => 'FOR332211',
+            'descricao' => 'Mesa de escritório',
+            'departamento_id' => $deps->first()->id,
+        ]);
         Patrimonio::factory(20)->create([
             'departamento_id' => fn() => $deps->random()->id,
         ]);
