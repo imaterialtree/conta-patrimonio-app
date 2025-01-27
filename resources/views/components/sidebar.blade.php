@@ -1,5 +1,8 @@
 <div class="bg-white p-3 vh-100 shadow-sm sticky-top">
-    <h4 class="mb-4">Opções</h4>
+    <div class="d-flex align-items-center mb-3">
+        <img src="{{ asset('logo.svg') }}" alt="Brand Logo" class="me-2" style="width: 30px; height: 30px;">
+        <span class="h5 mb-0">Conta patrimônio</span>
+    </div>
     <ul class="nav flex-column">
         <li class="nav-item mb-2">
             <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : 'text-dark' }}">

@@ -14,7 +14,7 @@
 
         <div class="col-lg-4 col-10">
             <div class="text-center">
-                <i class="bi bi-boxes fs-1"></i>
+                <img src="{{ asset('logo.svg') }}" alt="Logo" class="img-fluid" style="max-width: 100px;">
                 <h1 class="h3">Conta Patrimônio</h1>
             </div>
 
