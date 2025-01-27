@@ -24,7 +24,9 @@
                 <p class="form-control">{{ $patrimonio->classificacao->titulo }}</p>
             </div>
             <div class="text-center">
-                <a href="{{ route('relatorios.patrimonio_historico_view', $patrimonio) }}" class="btn btn-secondary">Ver histórico de mudanças</a>
+                <a href="{{ route('relatorios.patrimonio.historico.view', ['patrimonio_id' => $patrimonio]) }}"
+                    class="btn btn-secondary">Ver
+                    histórico de mudanças</a>
             </div>
         </div>
     </div>

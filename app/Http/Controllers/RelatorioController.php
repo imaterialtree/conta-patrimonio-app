@@ -56,14 +56,6 @@ class RelatorioController extends Controller
         return view('relatorio.select-contagem', compact('contagens'));
     }
 
-
-    public function patrimonioHistorico(Patrimonio $patrimonio)
-    {
-        $audits = $patrimonio->audits;
-
-        return view('relatorio.patrimonio.historico', compact('patrimonio', 'audits'));
-    }
-
     public function historicoMovimentacaoForm()
     {
         $departamentos = Departamento::all();
@@ -120,14 +112,16 @@ class RelatorioController extends Controller
         return $pdf->stream('relatorio_historico_movimentacao.pdf');
     }
 
-    public function patrimonioHistoricoView(Patrimonio $patrimonio)
+    public function patrimonioHistoricoView()
     {
+        $patrimonio = Patrimonio::findOrFail(request('patrimonio_id'));
         $audits = $patrimonio->audits;
         return view('relatorio.patrimonio_historico_view', compact('patrimonio', 'audits'));
     }
 
-    public function patrimonioHistoricoPdf(Patrimonio $patrimonio)
+    public function patrimonioHistoricoPdf()
     {
+        $patrimonio = Patrimonio::findOrFail(request('patrimonio_id'));
         $audits = $patrimonio->audits;
         $pdf = PDF::loadView('relatorio.patrimonio_historico_pdf', compact('patrimonio', 'audits'));
         return $pdf->stream('relatorio_patrimonio_historico.pdf');

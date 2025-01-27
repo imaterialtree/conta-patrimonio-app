@@ -39,12 +39,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('relatorios/contagem', [RelatorioController::class, 'selectContagem'])->name('relatorios.contagem');
     Route::get('relatorios/contagem/{contagem}', [RelatorioController::class, 'contagem'])->name('relatorios.contagem.pdf');
     Route::get('relatorios/historico-movimentacao', [RelatorioController::class, 'historicoMovimentacao'])->name('relatorios.historico_movimentacao');
-    Route::get('relatorios/patrimonio/{patrimonio}', [RelatorioController::class, 'patrimonioHistorico'])->name('relatorios.patrimonio.historico');
     Route::get('relatorios/historico-movimentacao', [RelatorioController::class, 'historicoMovimentacaoForm'])->name('relatorios.historico_movimentacao.form');
     Route::get('relatorios/historico-movimentacao/view', [RelatorioController::class, 'historicoMovimentacaoView'])->name('relatorios.historico_movimentacao.view');
     Route::get('relatorios/historico-movimentacao/pdf', [RelatorioController::class, 'historicoMovimentacaoPdf'])->name('relatorios.historico_movimentacao.pdf');
-    Route::get('relatorios/patrimonio/{patrimonio}/historico', [RelatorioController::class, 'patrimonioHistoricoView'])->name('relatorios.patrimonio.historico.view');
-    Route::get('relatorios/patrimonio/{patrimonio}/historico/pdf', [RelatorioController::class, 'patrimonioHistoricoPdf'])->name('relatorios.patrimonio.historico.pdf');
+    Route::get('relatorios/patrimonio', [RelatorioController::class, 'patrimonioHistoricoForm'])->name('relatorios.patrimonio.form');
+    Route::get('relatorios/patrimonio//historico', [RelatorioController::class, 'patrimonioHistoricoView'])->name('relatorios.patrimonio.historico.view');
+    Route::get('relatorios/patrimonio//historico/pdf', [RelatorioController::class, 'patrimonioHistoricoPdf'])->name('relatorios.patrimonio.historico.pdf');
 });
 
 Route::prefix('comissao')->name('comissao.')

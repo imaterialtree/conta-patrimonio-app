@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <h2>Selecionar Patrimônio</h2>
-        <form action="{{ route('relatorios.patrimonio_historico_view') }}" method="GET">
+        <form action="{{ route('relatorios.patrimonio.historico.view') }}" method="GET">
             <div class="mb-3">
                 <label for="patrimonio_id" class="form-label">Patrimônio</label>
                 <select id="patrimonio_id" name="patrimonio_id" class="form-select" required>
