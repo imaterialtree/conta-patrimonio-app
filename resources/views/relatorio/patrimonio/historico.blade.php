@@ -12,7 +12,6 @@
             <thead>
                 <tr>
                     <th>Data</th>
-                    <th>Usuário</th>
                     <th>Alterações</th>
                 </tr>
             </thead>
@@ -20,7 +19,6 @@
                 @foreach ($audits as $audit)
                     <tr>
                         <td>{{ $audit->created_at }}</td>
-                        <td>{{ $audit->user->name ?? 'Sistema' }}</td>
                         <td>
                             <ul>
                                 @foreach ($audit->getModified() as $attribute => $modified)
