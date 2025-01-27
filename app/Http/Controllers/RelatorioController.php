@@ -132,4 +132,10 @@ class RelatorioController extends Controller
         $pdf = PDF::loadView('relatorio.patrimonio_historico_pdf', compact('patrimonio', 'audits'));
         return $pdf->stream('relatorio_patrimonio_historico.pdf');
     }
+
+    public function patrimonioHistoricoForm()
+    {
+        $patrimonios = Patrimonio::all();
+        return view('relatorio.patrimonio_historico_form', compact('patrimonios'));
+    }
 }
