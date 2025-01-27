@@ -129,6 +129,7 @@ return [
         'PatrimonioStatus' => App\Enums\PatrimonioStatus::class,
         'ClassificacaoEnum' => App\Enums\ClassificacaoEnum::class,
         'ContagemStatus' => App\Enums\ContagemStatus::class,
+        'DepartamentoHelper' => App\Helpers\DepartamentoHelper::class,
     ])->toArray(),
 
 ];

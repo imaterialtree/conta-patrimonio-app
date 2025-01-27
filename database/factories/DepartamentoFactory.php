@@ -18,7 +18,7 @@ class DepartamentoFactory extends Factory
     {
         return [
             'codigo' => fake()->unique()->regexify('[A-Z\d]{5}'),
-            'titulo' => fake()->sentence(3),
+            'titulo' => fake()->words(3, true),
         ];
     }
 }
