@@ -7,6 +7,7 @@ use App\Models\Departamento;
 use App\Models\Patrimonio;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use App\Helpers\DepartamentoHelper;
 
 class RelatorioController extends Controller
 {
@@ -61,5 +62,74 @@ class RelatorioController extends Controller
         $audits = $patrimonio->audits;
 
         return view('relatorio.patrimonio.historico', compact('patrimonio', 'audits'));
+    }
+
+    public function historicoMovimentacaoForm()
+    {
+        $departamentos = Departamento::all();
+        return view('relatorio.historico_movimentacao_form', compact('departamentos'));
+    }
+
+    public function historicoMovimentacaoView(Request $request)
+    {
+        $query = Patrimonio::query();
+
+        if ($request->filled('data_inicio')) {
+            $query->whereHas('audits', function ($q) use ($request) {
+                $q->where('created_at', '>=', $request->data_inicio);
+            });
+        }
+
+        if ($request->filled('departamento_id')) {
+            $query->whereHas('audits', function ($q) use ($request) {
+                $q->where('new_values->departamento_id', $request->departamento_id);
+            });
+        }
+
+        if ($request->filled('movimentado')) {
+            $query->whereHas('audits', function($q) use ($request) {
+                $request->dataInicio ? $q->where('created_at', '>=', $request->dataInicio) : null;
+                $request->dataInicio ? $q->where('new_values->departamento_id', $request->departamento_id) : null;
+            });
+        }
+
+        // Carregar os patrimônios com os audits filtrados
+        $patrimonios = $query->with(['audits' => function ($q) use ($request) {
+            if ($request->filled('data_inicio')) {
+                $q->where('created_at', '>=', $request->data_inicio);
+            }
+            if ($request->filled('departamento_id')) {
+                $q->where('new_values->departamento_id', $request->departamento_id);
+            }
+        }])->get();
+
+        // Adicionar o título do departamento aos audits
+        foreach ($patrimonios as $patrimonio) {
+            foreach ($patrimonio->audits as $audit) {
+                $audit->departamento_titulo = DepartamentoHelper::getDepartamentoTitulo($audit->new_values['departamento_id']);
+            }
+        }
+
+        return view('relatorio.historico_movimentacao_view', compact('patrimonios'));
+    }
+
+    public function historicoMovimentacaoPdf(Request $request)
+    {
+        $patrimonios = $this->historicoMovimentacaoView($request)->patrimonios;
+        $pdf = PDF::loadView('relatorio.historico_movimentacao_pdf', compact('patrimonios'));
+        return $pdf->stream('relatorio_historico_movimentacao.pdf');
+    }
+
+    public function patrimonioHistoricoView(Patrimonio $patrimonio)
+    {
+        $audits = $patrimonio->audits;
+        return view('relatorio.patrimonio_historico_view', compact('patrimonio', 'audits'));
+    }
+
+    public function patrimonioHistoricoPdf(Patrimonio $patrimonio)
+    {
+        $audits = $patrimonio->audits;
+        $pdf = PDF::loadView('relatorio.patrimonio_historico_pdf', compact('patrimonio', 'audits'));
+        return $pdf->stream('relatorio_patrimonio_historico.pdf');
     }
 }

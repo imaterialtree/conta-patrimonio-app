@@ -19,7 +19,8 @@
                         <td>
                             <ul>
                                 @foreach ($audit->getModified() as $attribute => $modified)
-                                    <li>{{ $attribute }}: {{ $modified['old'] }} -> {{ $modified['new'] }}</li>
+                                    <li>{{ $attribute }}: {{ $modified['old'] ?? null }} ->
+                                        {{ $modified['new'] ?? null }}</li>
                                 @endforeach
                             </ul>
                         </td>

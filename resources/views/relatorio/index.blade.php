@@ -19,7 +19,7 @@
         <x-card-btn>
             <i class="bi bi-clock-history fs-2"></i>
             <h4>Histórico de Movimentação de Patrimônio</h4>
-            <a href="{{ route('relatorios.historico_movimentacao') }}" class="stretched-link" target="_blank"></a>
+            <a href="{{ route('relatorios.historico_movimentacao.form') }}" class="stretched-link"></a>
         </x-card-btn>
     </div>
 @endsection
