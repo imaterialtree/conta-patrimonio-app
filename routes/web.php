@@ -54,7 +54,7 @@ Route::prefix('comissao')->name('comissao.')
         Route::get('perfil', [UsuarioController::class, 'perfil'])->name('perfil');
         Route::view('config', 'comissao.config')->name('config');
         Route::get('patrimonios', [ComissaoContagemController::class, 'patrimonios'])->name('patrimonios');
-        Route::get('patrimonios/show', [ComissaoContagemController::class, 'showPatrimonio'])->name('comissao.patrimonios.show');
+        Route::get('patrimonios/show', [ComissaoContagemController::class, 'showPatrimonio'])->name('patrimonios.show');
 
         Route::prefix('contagem/{contagem}')->name('contagem.')->group(function () {
             Route::get('departamentos', [ComissaoContagemController::class, 'departamentos'])->name('departamentos');

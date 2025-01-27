@@ -19,12 +19,12 @@
                 <h5 class="modal-title" id="addNotListedModalLabel">Ver Patrimônio</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('comissao.patrimonios.search') }}" method="GET">
+            <form action="{{ route('comissao.patrimonios.show') }}" method="GET">
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="codigoPatrimonio" class="form-label">Código do Patrimônio</label>
-                        <input type="text" class="form-control" id="codigoPatrimonio" name="buscar" required
+                        <input type="text" class="form-control" id="codigoPatrimonio" name="codigo" required
                             placeholder="Digite o código">
                     </div>
                 </div>

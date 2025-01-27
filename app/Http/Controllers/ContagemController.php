@@ -86,6 +86,7 @@ class ContagemController extends Controller
         $contagem->update([
             'status' => ContagemStatus::CANCELADO,
         ]);
+        $contagem->delete();
 
         return back();
     }

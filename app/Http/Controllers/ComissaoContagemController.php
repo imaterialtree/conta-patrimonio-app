@@ -41,7 +41,11 @@ class ComissaoContagemController extends Controller
     public function showPatrimonio(Request $request)
     {
         $codigo = $request->input('codigo');
-        $patrimonio = Patrimonio::where('codigo', $codigo)->firstOrFail();
+        $patrimonio = Patrimonio::where('codigo', $codigo)->first();
+        if (!$patrimonio) {
+            return redirect()->back()->with('error', 'Patrimônio não encontrado.');
+        }
+
         return view('comissao.patrimonios.show', compact('patrimonio'));
     }
 }
