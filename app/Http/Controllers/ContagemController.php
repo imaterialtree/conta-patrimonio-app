@@ -56,14 +56,23 @@ class ContagemController extends Controller
         return view('contagem.show', compact('contagem', 'departamentos', 'patrimoniosContados', 'patrimonioTotal'));
     }
 
-    public function edit(string $id)
+    public function edit(Contagem $contagem)
     {
-        //
+        $membros = Usuario::all();
+
+        return view('contagem.edit', compact('contagem', 'membros'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Contagem $contagem)
     {
-        //
+        $request->validate([
+            'membros' => 'required',
+            'membros.*' => 'exists:usuarios,id',
+        ]);
+
+        $contagem->usuariosComissao()->sync($request->membros);
+
+        return to_route('contagens.show', $contagem)->with('success', 'Usuários da contagem atualizados com sucesso!');
     }
 
     public function destroy(string $id)
