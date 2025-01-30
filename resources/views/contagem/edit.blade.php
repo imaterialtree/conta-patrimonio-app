@@ -5,7 +5,6 @@
         <h2 class="mb-4">Editar Contagem</h2>
 
         <!-- Seção de Comissão -->
-        <h4 class="mb-3">Editar comissão para contagem do inventário</h4>
         <div class="row">
             <!-- Membros da Comissão -->
             <div class="col-md-6">
