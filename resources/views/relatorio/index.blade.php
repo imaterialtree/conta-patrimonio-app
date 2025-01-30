@@ -26,7 +26,7 @@
     <div class="mb-3 col-5">
         <x-card-btn>
             <i class="bi bi-file-earmark-text fs-2"></i>
-            <h4>Relatório de Patrimônio</h4>
+            <h4>Histórico de Alterações do Patrimônio</h4>
             <a href="{{ route('relatorios.patrimonio.form') }}" class="stretched-link"></a>
         </x-card-btn>
     </div>

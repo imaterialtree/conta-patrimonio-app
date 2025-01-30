@@ -14,7 +14,8 @@
             border-collapse: collapse;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #000;
             padding: 8px;
             text-align: left;
@@ -43,11 +44,22 @@
                     <td>{{ $patrimonio->codigo }}</td>
                     <td>{{ $patrimonio->descricao }}</td>
                     <td>
-                        <ul>
-                            @foreach ($patrimonio->audits as $audit)
-                                <li>{{ $audit->created_at }} - {{ $audit->user->name ?? 'Sistema' }} - {{ DepartamentoHelper::getDepartamentoTitulo($audit->new_values['departamento_id']) }}</li>
-                            @endforeach
-                        </ul>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Departamento</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($patrimonio->audits as $audit)
+                                    <tr>
+                                        <td>{{ $audit->created_at->format('d/m/Y H:i') }}</td>
+                                        <td>{{ $audit->departamento_titulo }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </td>
                 </tr>
             @endforeach

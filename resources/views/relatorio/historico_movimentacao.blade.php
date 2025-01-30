@@ -42,7 +42,7 @@
             <tbody>
                 @foreach ($modificacoes as $modificacao)
                     <tr>
-                        <td>{{ $modificacao['data_modificacao'] }}</td>
+                        <td>{{ $modificacao['data_modificacao']->format('d/m/Y H:i') }}</td>
                         <td>{{ $modificacao['departamento_novo']?->titulo }}</td>
                     </tr>
                 @endforeach

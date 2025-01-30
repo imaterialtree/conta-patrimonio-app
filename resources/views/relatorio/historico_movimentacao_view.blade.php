@@ -24,13 +24,23 @@
                 <tr>
                     <td>{{ $patrimonio->codigo }}</td>
                     <td>{{ $patrimonio->descricao }}</td>
-                    <td>
-                        <ul>
-                            @foreach ($patrimonio->audits as $audit)
-                                <li>{{ $audit->created_at }} - {{ $audit->user->name ?? 'Sistema' }} -
-                                    {{ $audit->departamento_titulo }}</li>
-                            @endforeach
-                        </ul>
+                    <td colspan="2">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Departamento</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($patrimonio->audits as $audit)
+                                    <tr>
+                                        <td>{{ $audit->created_at->format('d/m/Y H:i') }}</td>
+                                        <td>{{ $audit->departamento_titulo }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </td>
                 </tr>
             @endforeach

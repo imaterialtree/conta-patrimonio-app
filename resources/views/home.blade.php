@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <h2 class="mb-4">Inventariado</h2>
+        <h2 class="mb-4">Início</h2>
     </div>
 
     <div class="row">

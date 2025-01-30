@@ -22,7 +22,7 @@
         <tbody>
             @foreach ($audits as $audit)
                 <tr>
-                    <td>{{ $audit->created_at }}</td>
+                    <td>{{ $audit->created_at->format('d/m/Y H:i') }}</td>
                     <td>{{ DepartamentoHelper::getDepartamentoTitulo($audit->new_values['departamento_id']) }}</td>
                 </tr>
             @endforeach

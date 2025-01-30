@@ -38,7 +38,7 @@ class RelatorioController extends Controller
             })->map(function ($audit) {
             return [
                 'departamento_novo' => Departamento::find($audit->new_values['departamento_id']),
-                'data_modificacao' => $audit->created_at,
+                'data_modificacao' => $audit->created_at->format('d/m/Y H:i'),
             ];
             });
             if ($mudanca->isNotEmpty()) {
