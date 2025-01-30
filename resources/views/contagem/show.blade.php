@@ -41,6 +41,7 @@
             <div class="col-md-6">
                 <div class="card shadow-sm border-0 p-3">
                     <h5 class="card-title">Membros da Comissão de Contagem</h5>
+                    <a href="{{ route('contagens.edit', $contagem) }}">Editar membros</a>
                     <table id="tabela-servidores" class="table table-striped">
                         <thead>
                             <tr>
@@ -59,14 +60,6 @@
                     </table>
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-4 mb-3">
-            <x-card-btn>
-                <i class="bi bi-clipboard-check fs-2"></i>
-                <h5 class="card-title mt-2">Ver Sugestões de Mudança de Classificação</h5>
-                <a href="{{ route('contagem.sugestoes', $contagem) }}" class="stretched-link"></a>
-            </x-card-btn>
         </div>
 
         <div class="row">
@@ -91,6 +84,14 @@
                 </button>
                 @include('contagem.partials.cancel-form')
             @endif
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <x-card-btn>
+                <i class="bi bi-clipboard-check fs-2"></i>
+                <h5 class="card-title mt-2">Ver Sugestões de Mudança de Classificação</h5>
+                <a href="{{ route('contagem.sugestoes', $contagem) }}" class="stretched-link"></a>
+            </x-card-btn>
         </div>
 
         <div class="row">

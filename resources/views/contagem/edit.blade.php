@@ -2,17 +2,10 @@
 
 @section('content')
     <div class="container mt-4">
-        <h2 class="mb-4">Criar Nova Contagem</h2>
-
-        {{-- <!-- Botão Importar Patrimônio -->
-        <div class="mb-4">
-            <button class="btn btn-secondary">
-                <i class="bi bi-upload"></i> Importar Patrimônio
-            </button>
-        </div> --}}
+        <h2 class="mb-4">Editar Contagem</h2>
 
         <!-- Seção de Comissão -->
-        <h4 class="mb-3">Criar comissão para contagem do inventário</h4>
+        <h4 class="mb-3">Editar comissão para contagem do inventário</h4>
         <div class="row">
             <!-- Membros da Comissão -->
             <div class="col-md-6">
@@ -27,6 +20,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($contagem->usuariosComissao as $membro)
+                                <tr>
+                                    <td>{{ $membro['nome'] }}</td>
+                                    <td>{{ $membro['email'] }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-danger mover-para-servidores"
+                                            value="{{ $membro->id }}">
+                                            <i class="bi bi-arrow-right-circle"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -46,16 +51,18 @@
                         </thead>
                         <tbody>
                             @foreach ($membros as $membro)
-                                <tr>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary mover-para-comissao"
-                                            value="{{ $membro->id }}">
-                                            <i class="bi bi-arrow-left-circle"></i>
-                                        </button>
-                                    </td>
-                                    <td>{{ $membro['nome'] }}</td>
-                                    <td>{{ $membro['email'] }}</td>
-                                </tr>
+                                @if (!$contagem->usuariosComissao->contains($membro))
+                                    <tr>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary mover-para-comissao"
+                                                value="{{ $membro->id }}">
+                                                <i class="bi bi-arrow-left-circle"></i>
+                                            </button>
+                                        </td>
+                                        <td>{{ $membro['nome'] }}</td>
+                                        <td>{{ $membro['email'] }}</td>
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -63,13 +70,15 @@
             </div>
         </div>
 
-        <!-- Botão Iniciar Contagem -->
-        <form action="{{ route('contagens.store') }}" method="POST" id="formulario" onsubmit="enviar()">
+        <!-- Botão Atualizar Contagem -->
+        <form action="{{ route('contagens.update', $contagem) }}" method="POST" id="formulario"
+            onsubmit="enviar()">
             @csrf
+            @method('PUT')
             {{-- Inputs preenchidos por JS --}}
             <div class="mt-4 text-center">
                 <button class="btn btn-primary btn-lg">
-                    Iniciar contagem
+                    Atualizar contagem
                 </button>
             </div>
         </form>
@@ -78,7 +87,7 @@
 
 @push('scripts')
     <script>
-        let membros = [];
+        let membros = @json($contagem->usuariosComissao->pluck('id'));
         document.addEventListener('DOMContentLoaded', () => {
             const tabelaComissao = document.querySelector('#tabela-membros-comissao tbody');
             const tabelaServidores = document.querySelector('#tabela-servidores tbody');

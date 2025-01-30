@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComissaoContagemController;
 use App\Http\Controllers\ContagemController;
 use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PatrimonioContadoController;
 use App\Http\Controllers\PatrimonioController;
@@ -13,12 +14,13 @@ use App\Models\Departamento;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $isAdmin = auth()->user()->isAdmin();
+    if (auth()->guest()) {
+        return redirect()->route('guest');
+    }
+    $isAdmin = auth()->user()?->isAdmin();
 
     return to_route($isAdmin ? 'home' : 'comissao.home');
-})->middleware('auth');
-
-Route::resource('usuarios', UsuarioController::class);
+});
 
 Route::get('/login', [AuthController::class, 'create'])->name('login');
 Route::post('/login', [AuthController::class, 'store']);
@@ -64,3 +66,7 @@ Route::prefix('comissao')->name('comissao.')
             Route::post('departamentos/{departamento}/patrimonios/{patrimonio?}', [PatrimonioContadoController::class, 'store'])->name('patrimonios.store');
         });
     });
+
+Route::get('guest', [GuestController::class, 'index'])->name('guest');
+Route::get('/guest/patrimonios', [GuestController::class, 'patrimoniosIndex'])->name('guest.patrimonios.index');
+Route::get('/guest/patrimonios/show', [GuestController::class, 'patrimoniosShow'])->name('guest.patrimonios.show');
