@@ -111,7 +111,7 @@
                     $(botao).removeClass('btn-danger mover-para-servidores');
                     botao.innerHTML = `<i class="bi bi-arrow-left-circle"></i>`;
 
-                    var index = membros.indexOf(botao.value);
+                    var index = membros.indexOf(parseInt(botao.value));
                     if (index !== -1) {
                         membros.splice(index, 1);
                     }

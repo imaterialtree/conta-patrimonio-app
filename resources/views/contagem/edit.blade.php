@@ -71,8 +71,7 @@
         </div>
 
         <!-- Botão Atualizar Contagem -->
-        <form action="{{ route('contagens.update', $contagem) }}" method="POST" id="formulario"
-            onsubmit="enviar()">
+        <form action="{{ route('contagens.update', $contagem) }}" method="POST" id="formulario" onsubmit="enviar()">
             @csrf
             @method('PUT')
             {{-- Inputs preenchidos por JS --}}
@@ -120,7 +119,7 @@
                     $(botao).removeClass('btn-danger mover-para-servidores');
                     botao.innerHTML = `<i class="bi bi-arrow-left-circle"></i>`;
 
-                    var index = membros.indexOf(botao.value);
+                    var index = membros.indexOf(parseInt(botao.value));
                     if (index !== -1) {
                         membros.splice(index, 1);
                     }
