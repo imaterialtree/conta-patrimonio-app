@@ -1,3 +1,4 @@
+@props(['route' => route('comissao.patrimonios.show')])
 <div class="fixed-bottom d-flex mx-2 justify-content-around" style="bottom: 70px;">
     <button id="readButton" class="btn btn-primary col-5">
         <span id="buttonText">Ler com RFID</span>
@@ -19,8 +20,7 @@
                 <h5 class="modal-title" id="addNotListedModalLabel">Ver Patrimônio</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('comissao.patrimonios.show') }}" method="GET">
-                @csrf
+            <form action="{{ $route }}" method="GET">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="codigoPatrimonio" class="form-label">Código do Patrimônio</label>
