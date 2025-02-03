@@ -22,8 +22,10 @@ class RelatorioController extends Controller
         $patrimoniosContados = $contagem->patrimoniosContados;
         $patrimonioTotal = Patrimonio::count();
         $sugestoes = $contagem->patrimoniosContados()->whereNotNull('classificacao_proposta_id')->get();
+        $patrimoniosNaoEncontrados = $contagem->patrimoniosContados()->naoEncontrados()->get();
+        $patrimoniosDiferenteLocal = $contagem->patrimoniosContados()->diferenteLocal()->get();
 
-        $pdf = PDF::loadView('relatorio.contagem', compact('contagem', 'departamentos', 'patrimoniosContados', 'patrimonioTotal', 'sugestoes'));
+        $pdf = PDF::loadView('relatorio.contagem', compact('contagem', 'departamentos', 'patrimoniosContados', 'patrimonioTotal', 'sugestoes', 'patrimoniosNaoEncontrados', 'patrimoniosDiferenteLocal'));
         return $pdf->stream('relatorio_contagem.pdf');
     }
 
@@ -72,6 +74,12 @@ class RelatorioController extends Controller
             });
         }
 
+        if ($request->filled('data_fim')) {
+            $query->whereHas('audits', function ($q) use ($request) {
+                $q->where('created_at', '<=', $request->data_fim);
+            });
+        }
+
         if ($request->filled('departamento_id')) {
             $query->whereHas('audits', function ($q) use ($request) {
                 $q->where('new_values->departamento_id', $request->departamento_id);
@@ -82,7 +90,7 @@ class RelatorioController extends Controller
             $query->whereHas('audits', function($q) use ($request) {
                 $request->dataInicio ? $q->where('created_at', '>=', $request->dataInicio) : null;
                 $request->dataInicio ? $q->where('new_values->departamento_id', $request->departamento_id) : null;
-            });
+            }, '>', 1);
         }
 
         // Carregar os patrimônios com os audits filtrados
@@ -116,6 +124,7 @@ class RelatorioController extends Controller
     {
         $patrimonio = Patrimonio::findOrFail(request('patrimonio_id'));
         $audits = $patrimonio->audits;
+        // dd($patrimonio->toArray(), $audits->toArray());
         return view('relatorio.patrimonio_historico_view', compact('patrimonio', 'audits'));
     }
 

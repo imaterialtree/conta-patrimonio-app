@@ -16,10 +16,6 @@
         <main class="container my-4 flex-grow-1">
             @yield('content')
         </main>
-
-        <footer class="bg-white text-center py-3">
-            <p class="mb-0">Conta Patrimônio &copy; {{ date('Y') }}</p>
-        </footer>
     </div>
 
     @stack('scripts')

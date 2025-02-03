@@ -11,7 +11,7 @@
     </div>
     <div class="card mx-auto">
         <div class="card-body">
-            <h2 class="card-title h4 mb-4">Visualizar Departamento</h2>
+            <h2 class="card-title h4 mb-4">Visualizar Setor</h2>
             <div class="mb-3">
                 <label class="form-label">Nome</label>
                 <p class="form-control">{{ $departamen->titulo }}</p>

@@ -10,8 +10,7 @@
 @section('content')
     <div class="container my-3">
         <!-- Título -->
-        <p class="h5">Departamento:</p>
-        <p class="h6">{{ $departamento->titulo }}</p class="h6">
+        <p><span class="h5">Setor:</span> <span class="h6">{{ $departamento->titulo }}</span></p>
 
         <!-- Legenda de Cores -->
         <div class="d-flex align-items-center flex-wrap gap-2 mb-3">
@@ -99,7 +98,7 @@
         <div style="height: 70px;"></div>
         <!-- Botão flutuante -->
         <div class="fixed-bottom d-flex mx-2 justify-content-around" style="bottom: 70px;">
-            <button id="readButton" class="btn btn-primary col-5">
+            <button id="readButtona" class="btn btn-primary col-5">
                 <span id="buttonText">Ler Patrimonio</span>
                 <div id="buttonSpinner" class="spinner-border spinner-border-sm text-light d-none" role="status">
                     <span class="visually-hidden">Carregando...</span>

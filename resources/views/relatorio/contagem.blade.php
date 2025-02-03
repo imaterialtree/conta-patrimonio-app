@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Relatório de Contagem</title>
     <style>
-        body { font-family: DejaVu Sans, sans-serif; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        th, td { border: 1px solid #000; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
+        body {
+            font-family: DejaVu Sans, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
+
 <body>
     <h1>Relatório de Contagem</h1>
-    <h2>Detalhes da Contagem</h2>
+    <h4>Detalhes da Contagem</h4>
     <table>
         <tr>
             <th>Data de Início</th>
@@ -32,7 +50,7 @@
         </tr>
     </table>
 
-    <h2>Membros da Comissão de Contagem</h2>
+    <h4>Membros da Comissão de Contagem</h4>
     <table>
         <thead>
             <tr>
@@ -50,14 +68,11 @@
         </tbody>
     </table>
 
-    <h2>Progresso da Contagem</h2>
-    <p>{{ $contagem->progresso() }} / {{ $patrimonioTotal }}</p>
-
-    <h2>Sugestões de Mudança de Classificação</h2>
+    <h4>Sugestões de Classificação</h4>
     <table>
         <thead>
             <tr>
-                <th>Departamento</th>
+                <th>Setor</th>
                 <th>Patrimônio</th>
                 <th>Classificação Antiga</th>
                 <th>Classificação Proposta</th>
@@ -76,5 +91,44 @@
             @endforeach
         </tbody>
     </table>
+
+    <h4>Patrimônios Não Encontrados</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Departamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($patrimoniosNaoEncontrados as $patrimonioContado)
+                <tr>
+                    <td>{{ $patrimonioContado->patrimonio->descricao }}</td>
+                    <td>{{ $patrimonioContado->patrimonio->departamento->titulo }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <h4>Patrimônios Encontrados em Local Diferente</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Departamento Esperado</th>
+                <th>Departamento Encontrado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($patrimoniosDiferenteLocal as $patrimonioContado)
+                <tr>
+                    <td>{{ $patrimonioContado->patrimonio->descricao }}</td>
+                    <td>{{ $patrimonioContado->patrimonio->departamento->titulo }}</td>
+                    <td>{{ $patrimonioContado->departamento->titulo }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
+
 </html>

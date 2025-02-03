@@ -3,8 +3,8 @@
 @section('content')
     <div class="container my-3">
         <!-- Título -->
-        <h5>Contagem de Patrimônio</h5>
-        <p class="text-muted">Selecione um departamento</p>
+        <h5>Levantamento de Inventário</h5>
+        <p class="text-muted">Selecione um setor</p>
 
         <!-- Barra de pesquisa -->
         <div class="input-group mb-3">
@@ -18,8 +18,8 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th class="col-3">Código</th>
-                    <th class="col-6">Departamento</th>
+                    {{-- <th class="col-3">Código</th> --}}
+                    <th class="col-6">Setor</th>
                     <th class="col-3">Progresso</th>
                 </tr>
             </thead>
@@ -27,7 +27,7 @@
                 <!-- Exemplo de departamentos preenchidos dinamicamente -->
                 @foreach ($departamentos as $departamento)
                     <tr class="{{ $departamento->status_color }} position-relative">
-                        <td>{{ $departamento->codigo }}</td>
+                        {{-- <td>{{ $departamento->codigo }}</td> --}}
                         <td>{{ $departamento->titulo }}</td>
                         <td>
                             {{ $contagem->progressoDepartamento($departamento) }}/{{ $departamento->patrimonios->count() }}

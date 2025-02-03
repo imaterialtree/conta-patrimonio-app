@@ -24,19 +24,19 @@
         <li class="nav-item mb-2">
             <a href="{{ route('patrimonios.index') }}"
                 class="nav-link {{ request()->routeIs('patrimonios.index') ? 'active' : 'text-dark' }}">
-                <i class="bi bi-box-seam me-2"></i> Gerenciar Patrimônio
+                <i class="bi bi-box-seam me-2"></i> Patrimônios
             </a>
         </li>
         <li class="nav-item mb-2">
             <a href="{{ route('usuarios.index') }}"
                 class="nav-link {{ request()->routeIs('usuarios.index') ? 'active' : 'text-dark' }}">
-                <i class="bi bi-people-fill me-2"></i> Gerenciar Usuários
+                <i class="bi bi-people-fill me-2"></i> Usuários
             </a>
         </li>
         <li class="nav-item mb-2">
             <a href="{{ route('departamentos.index') }}"
                 class="nav-link {{ request()->routeIs('departamentos.index') ? 'active' : 'text-dark' }}">
-                <i class="bi bi-building-fill me-2"></i> Departamentos
+                <i class="bi bi-building-fill me-2"></i> Setores
             </a>
         </li>
     </ul>

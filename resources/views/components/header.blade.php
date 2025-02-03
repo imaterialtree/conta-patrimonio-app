@@ -1,6 +1,6 @@
 <!-- resources/views/components/header.blade.php -->
 <div class="bg-white p-3 shadow-sm d-flex justify-content-between align-items-center sticky-top">
-    <a class="h5 mb-0 text-decoration-none" href="/">Inventariado</a>
+    <a class="h5 mb-0 text-decoration-none" href="/">Conta Patrimônio</a>
     <div class="d-flex align-items-center">
         @auth
             <i class="bi bi-person-circle fs-4 me-2"></i>

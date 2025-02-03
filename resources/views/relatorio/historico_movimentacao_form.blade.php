@@ -6,11 +6,21 @@
     <div class="row mb-3">
         <h2>Histórico de Movimentação de Patrimônio</h2>
     </div>
+    <p>Mostra os setores em que o patrimônio esteve</p>
+
+    <h4>Filtros</h4>
+    <p>Todos os filtros são opcionais</p>
 
     <form action="{{ route('relatorios.historico_movimentacao.view') }}" method="GET">
-        <div class="mb-3">
-            <label for="data_inicio" class="form-label">Data de Início</label>
-            <input type="date" class="form-control" id="data_inicio" name="data_inicio">
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <label for="data_inicio" class="form-label">Data de Início</label>
+                <input type="date" class="form-control" id="data_inicio" name="data_inicio">
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="data_fim" class="form-label">Data Final</label>
+                <input type="date" class="form-control" id="data_fim" name="data_fim">
+            </div>
         </div>
 
         <div class="mb-3">

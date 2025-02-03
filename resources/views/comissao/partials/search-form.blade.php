@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="mb-4">Patrimônios por Departamento</h2>
+    <h2 class="mb-4">Patrimônios</h2>
 
     <form action="{{ route('comissao.patrimonios') }}" method="GET" class="mb-4">
         <div class="input-group">
@@ -10,7 +10,7 @@
     </form>
 
     @foreach ($departamentos as $titulo => $patrimoniosDepartamento)
-        <h3>{{ $titulo }}</h3>
+        <h5>Setor: {{ $titulo }}</h5>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -18,7 +18,7 @@
                         <th>Código</th>
                         <th>Descrição</th>
                         <th>Classificação</th>
-                        <th>Departamento</th>
+                        <th>Setor</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,4 +40,4 @@
     </div>
 </div>
 <div style="height: 70px"></div>
-@include('comissao.partials.botao-leitura')
+{{-- @include('comissao.partials.botao-leitura') --}}

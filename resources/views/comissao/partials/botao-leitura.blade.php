@@ -1,5 +1,5 @@
-@props(['route' => route('comissao.patrimonios.show')])
-<div class="fixed-bottom d-flex mx-2 justify-content-around" style="bottom: 70px;">
+@props(['route' => route('comissao.patrimonios.show'), 'marginBottom' => '70px'])
+<div class="fixed-bottom d-flex mx-2 justify-content-around" style="bottom: {{ $marginBottom }};">
     <button id="readButton" class="btn btn-primary col-5">
         <span id="buttonText">Ler com RFID</span>
         <div id="buttonSpinner" class="spinner-border spinner-border-sm text-light d-none" role="status">

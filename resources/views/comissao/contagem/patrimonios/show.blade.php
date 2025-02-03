@@ -9,9 +9,16 @@
                 method="POST" class="mb-3">
                 @csrf
                 <input type="hidden" name="patrimonio_encontrado" value="true">
-                <button type="submit" class="btn btn-outline-primary">Marcar como encontrado</button>
+                <button type="submit" class="btn btn-outline-primary col-12">Marcar como encontrado</button>
             </form>
         @endif
+        <form action="{{ route('comissao.contagem.patrimonios.update', [$contagem, $departamento, $patrimonio]) }}"
+            method="POST" class="mb-3">
+            @csrf
+            @method('PUT')
+            <input type="hidden" name="nao_encontrado" value=1>
+            <button type="submit" class="btn btn-outline-secondary col-12">Marcar como não encontrado</button>
+        </form>
 
         <div class="card mb-3 mx-auto">
             <div class="card-body">
@@ -32,19 +39,13 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <strong>Departamento</strong>
+                        <strong>Setor</strong>
                         <p>{{ $patrimonio->departamento->titulo }}</p>
                     </div>
 
                     <div class="mb-3 row">
                         <strong>Classificação</strong>
                         <p>{{ $patrimonio->classificacao->titulo }}</p>
-                    </div>
-
-                    <div class="form-check mb-4">
-                        <input type="checkbox" id="nao_encontrado" name="nao_encontrado" class="form-check-input"
-                            value="1" data-bs-toggle="collapse" data-bs-target="#collapseClassificacaoProposta">
-                        <label for="nao_encontrado" class="form-check-label">Patrimônio não encontrado</label>
                     </div>
 
                     <div class="form-group mb-3 row collapse show" id="collapseClassificacaoProposta">

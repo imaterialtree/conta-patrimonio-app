@@ -56,17 +56,7 @@
             </a>
         @endif
 
-        <h5 class="m-0">@yield('title', 'Inventariado')</h5>
-
-        <div class="position-absolute end-0 me-3">
-            <a href="{{ route('logout') }}"
-                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <i class="bi bi-box-arrow-right"></i> Sair
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-        </div>
+        <h5 class="m-0">@yield('title', 'Conta Patrimônio')</h5>
     </header>
 
     @if (session()->has('success'))
@@ -92,7 +82,8 @@
             <i class="bi bi-person"></i>
             <p>Perfil</p>
         </a>
-        <a href="{{ route('comissao.patrimonios') }}" class="{{ request()->is('comissao/patrimonios') ? 'active' : '' }}">
+        <a href="{{ route('comissao.patrimonios') }}"
+            class="{{ request()->is('comissao/patrimonios') ? 'active' : '' }}">
             <i class="bi bi-box-seam"></i>
             <p>Patrimônios</p>
         </a>

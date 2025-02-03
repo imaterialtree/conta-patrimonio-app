@@ -10,7 +10,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="deleteDepartamentoLabel{{ $departamento->id }}">
-                    {{ __('Tem certeza que deseja excluir esse departamento?') }}
+                    {{ __('Tem certeza que deseja excluir esse setor?') }}
                 </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -23,7 +23,7 @@
                         {{ __('Cancelar') }}
                     </button>
                     <button type="submit" class="btn btn-danger">
-                        {{ __('Excluir Departamento') }}
+                        {{ __('Excluir') }}
                     </button>
                 </form>
             </div>

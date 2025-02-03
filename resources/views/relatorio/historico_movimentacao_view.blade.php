@@ -29,7 +29,7 @@
                             <thead>
                                 <tr>
                                     <th>Data</th>
-                                    <th>Departamento</th>
+                                    <th>Setor</th>
                                 </tr>
                             </thead>
                             <tbody>

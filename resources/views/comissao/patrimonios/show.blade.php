@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="mb-3 row">
-                    <strong>Departamento</strong>
+                    <strong>Setor</strong>
                     <p>{{ $patrimonio->departamento->titulo }}</p>
                 </div>
 

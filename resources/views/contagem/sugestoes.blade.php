@@ -9,7 +9,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Departamento</th>
+                    <th>Setor</th>
                     <th>Patrimônio</th>
                     <th>Classificação Antiga</th>
                     <th>Classificação Proposta</th>

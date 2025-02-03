@@ -13,9 +13,9 @@ enum ClassificacaoEnum: string
     case IRRECUPERAVEL = 'Irrecuperável';
     case ALIENADO = 'Alienado';
 
-    public static function fromId(int $id): self
+    public static function fromId(int|string $id): self
     {
-        return match ($id) {
+        return match ((int) $id) {
             1 => self::NOVO,
             2 => self::EM_USO,
             3 => self::OCIOSO,

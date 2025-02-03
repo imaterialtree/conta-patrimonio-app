@@ -10,7 +10,7 @@
         Descrição do Patrimônio
     </x-input>
     <x-select name="departamento_id" id="departamento_id" :options="$departamentos->pluck('titulo', 'id')" :selected="$patrimonio?->departamento_id" required>
-        Departamento
+        Setor
     </x-select>
     <x-select name="classificacao_id" id="classificacao_id" :options="$classificacoes->pluck('titulo', 'id')" :selected="$patrimonio?->classificacao_id" required>
         Classificação

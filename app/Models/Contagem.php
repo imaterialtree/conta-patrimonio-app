@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Builder;
 
 class Contagem extends Model
 {
@@ -28,6 +29,20 @@ class Contagem extends Model
     protected $casts = [
         'finalizado_em' => 'datetime',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('notCancelled', function (Builder $builder) {
+            $builder->where('status', '!=', 'cancelado');
+        });
+    }
+
+    public function scopeWithCancelled($query)
+    {
+        return $query->withoutGlobalScope('notCancelled');
+    }
 
     // Relacionamentos
     public function usuarioCriador(): BelongsTo

@@ -34,7 +34,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
         ->parameters(['contagens' => 'contagem']);
     Route::put('contagens/{contagem}/finalizar', [ContagemController::class, 'finalizar'])->name('contagens.finalizar');
     Route::put('contagens/{contagem}/cancelar', [ContagemController::class, 'cancelar'])->name('contagens.cancelar');
-    Route::get('/contagem/{contagem}/sugestoes', [ContagemController::class, 'sugestoes'])->name('contagem.sugestoes');
+    Route::get('/contagens/{contagem}/sugestoes', [ContagemController::class, 'sugestoes'])->name('contagens.sugestoes');
+    Route::get('contagens/{contagem}/patrimonios-fora-de-lugar', [ContagemController::class, 'patrimoniosForaDeLugar'])->name('contagem.patrimonios_fora_de_lugar');
     Route::resource('departamentos', DepartamentoController::class);
     // relatorios
     Route::get('relatorios', [RelatorioController::class, 'index'])->name('relatorios.index');

@@ -63,12 +63,21 @@
         </div>
 
         <hr>
-        <div class="col-md-4 mb-3">
-            <x-card-btn>
-                <i class="bi bi-clipboard-check fs-2"></i>
-                <h5 class="card-title mt-2">Ver Sugestões de Mudança de Classificação</h5>
-                <a href="{{ route('contagem.sugestoes', $contagem) }}" class="stretched-link"></a>
-            </x-card-btn>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <x-card-btn>
+                    <i class="bi bi-clipboard-check fs-2"></i>
+                    <h5 class="card-title mt-2">Ver Sugestões de Mudança de Classificação</h5>
+                    <a href="{{ route('contagens.sugestoes', $contagem) }}" class="stretched-link"></a>
+                </x-card-btn>
+            </div>
+            <div class="col-md-4 mb-3">
+                <x-card-btn>
+                    <i class="bi bi-exclamation-triangle fs-2"></i>
+                    <h5 class="card-title mt-2">Ver Patrimônios Fora de Lugar</h5>
+                    <a href="{{ route('contagem.patrimonios_fora_de_lugar', $contagem) }}" class="stretched-link"></a>
+                </x-card-btn>
+            </div>
         </div>
 
         <div class="row">
@@ -96,7 +105,7 @@
         </div>
 
         <div class="row">
-            <h2>Progresso por Departamentos</h2>
+            <h2>Progresso por Setores</h2>
         </div>
         <div class="row">
             <div class="card shadow-sm border-0 p-3">
@@ -104,7 +113,7 @@
                 <table id="tabela-servidores" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Departamento</th>
+                            <th>Setor</th>
                             <th>Patrimônios Contados</th>
                         </tr>
                     </thead>

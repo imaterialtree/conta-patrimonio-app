@@ -95,7 +95,6 @@ class ContagemController extends Controller
         $contagem->update([
             'status' => ContagemStatus::CANCELADO,
         ]);
-        $contagem->delete();
 
         return back();
     }
@@ -105,5 +104,14 @@ class ContagemController extends Controller
         $patrimoniosContados = $contagem->patrimoniosContados()->whereNotNull('classificacao_proposta_id')->get();
 
         return view('contagem.sugestoes', compact('contagem', 'patrimoniosContados'));
+    }
+
+    public function patrimoniosForaDeLugar(Contagem $contagem)
+    {
+        $patrimoniosDiferenteLocal = $contagem->patrimoniosContados()
+            ->with('patrimonio','patrimonio.departamento', 'departamento')
+            ->diferenteLocal()->get();
+
+        return view('contagem.patrimonios_fora_de_lugar', compact('contagem', 'patrimoniosDiferenteLocal'));
     }
 }

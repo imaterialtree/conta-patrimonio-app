@@ -50,6 +50,9 @@
                             </td>
                             <td class="align-middle col-2">
                                 <div class="d-flex justify-content-around ">
+                                    <a href="{{ route('usuarios.show', $usuario) }}" class="btn text-primary" title="Ver usuário">
+                                        <i class="fa fa-eye"></i>Ver
+                                    </a>
                                     <a href="{{ route('usuarios.edit', $usuario) }}" class="btn text-primary"
                                         title="Editar usuário">
                                         <i class="fa fa-edit"></i>Editar

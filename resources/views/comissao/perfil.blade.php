@@ -3,7 +3,17 @@
 @section('content')
     <div class="card mx-auto">
         <div class="card-body">
+            <div class="position-absolute end-0 me-3">
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="bi bi-box-arrow-right"></i> Sair
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
             <h2 class="card-title h4 mb-4">Perfil</h2>
+
             <div class="d-flex flex-column align-items-center mb-4">
                 {{-- <img src="{{ asset(auth()->user()->icone) }}" alt="User Icon" class="rounded-circle" width="100" height="100"> --}}
                 <i class="fas fa-user-circle fa-3x mb-2"></i>
@@ -28,4 +38,5 @@
                 </li>
             </ul>
         </div>
-    @endsection
+    </div>
+@endsection

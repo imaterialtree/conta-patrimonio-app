@@ -14,7 +14,8 @@
             border-collapse: collapse;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #000;
             padding: 8px;
             text-align: left;
@@ -34,14 +35,13 @@
             <tr>
                 <th>Data</th>
                 <th>Usuário</th>
-                <th>Departamento</th>
+                <th>Setor</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($audits as $audit)
                 <tr>
                     <td>{{ $audit->created_at->format('d/m/Y H:i') }}</td>
-                    <td>{{ $audit->user->name ?? 'Sistema' }}</td>
                     <td>{{ DepartamentoHelper::getDepartamentoTitulo($audit->new_values['departamento_id']) }}</td>
                 </tr>
             @endforeach

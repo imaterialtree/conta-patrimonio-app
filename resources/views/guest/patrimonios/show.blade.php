@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container mt-3">
-        <a href="{{ route('guest') }}" class="btn btn-secondary mb-3">Voltar</a>
+        <a href="{{ url()->previous() }}" class="btn btn-secondary mb-3">Voltar</a>
         <h2 class="mb-4">Informações do Patrimônio</h2>
         <div class="card mb-3 mx-auto">
             <div class="card-body">

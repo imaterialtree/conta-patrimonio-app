@@ -55,4 +55,16 @@ class PatrimonioContado extends Model
     {
         return $this->belongsTo(Classificacao::class);
     }
+
+    public function scopeNaoEncontrados($query)
+    {
+        return $query->where('nao_encontrado', true);
+    }
+
+    public function scopeDiferenteLocal($query)
+    {
+        return $query->whereHas('patrimonio', function ($q) {
+            $q->whereColumn('patrimonios_contados.departamento_id', '!=', 'patrimonios.departamento_id');
+        });
+    }
 }
